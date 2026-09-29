@@ -1,0 +1,430 @@
+[
+  {
+    "patient_id": "SYN-001",
+    "age": 68,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 3,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1756.0,
+      "platelet_count_per_uL": 171550.0
+    }
+  },
+  {
+    "patient_id": "SYN-002",
+    "age": 42,
+    "sex": "Female",
+    "menopausal_status": "Premenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 2382.0,
+      "platelet_count_per_uL": 247201.0
+    }
+  },
+  {
+    "patient_id": "SYN-003",
+    "age": 45,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 1,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 4228.0,
+      "platelet_count_per_uL": 373817.0
+    }
+  },
+  {
+    "patient_id": "SYN-004",
+    "age": 52,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "radiation therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 5791.0,
+      "platelet_count_per_uL": 349291.0
+    }
+  },
+  {
+    "patient_id": "SYN-005",
+    "age": 52,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": null,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 2439.0,
+      "platelet_count_per_uL": 317699.0
+    }
+  },
+  {
+    "patient_id": "SYN-006",
+    "age": 38,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "hormone therapy",
+      "radiation therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1348.0,
+      "platelet_count_per_uL": 79851.0
+    }
+  },
+  {
+    "patient_id": "SYN-007",
+    "age": 73,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 3,
+    "prior_treatments": [
+      "chemotherapy",
+      "radiation therapy",
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1137.0,
+      "platelet_count_per_uL": 69196.0
+    }
+  },
+  {
+    "patient_id": "SYN-008",
+    "age": 65,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 2349.0,
+      "platelet_count_per_uL": 186796.0
+    }
+  },
+  {
+    "patient_id": "SYN-009",
+    "age": 71,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Equivocal"
+    },
+    "ecog_performance_status": 3,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 2161.0,
+      "platelet_count_per_uL": 353501.0
+    }
+  },
+  {
+    "patient_id": "SYN-010",
+    "age": 76,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 4,
+    "prior_treatments": [
+      "targeted therapy (anti-HER2)",
+      "chemotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 2121.0,
+      "platelet_count_per_uL": 293819.0
+    }
+  },
+  {
+    "patient_id": "SYN-011",
+    "age": 81,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": null
+    },
+    "ecog_performance_status": 2,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3994.0,
+      "platelet_count_per_uL": 175730.0
+    }
+  },
+  {
+    "patient_id": "SYN-012",
+    "age": 51,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 2,
+    "prior_treatments": [
+      "chemotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 6240.0,
+      "platelet_count_per_uL": 187979.0
+    }
+  },
+  {
+    "patient_id": "SYN-013",
+    "age": 61,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 3,
+    "prior_treatments": [
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 6476.0,
+      "platelet_count_per_uL": 299472.0
+    }
+  },
+  {
+    "patient_id": "SYN-014",
+    "age": 56,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "surgery",
+      "targeted therapy (anti-HER2)"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 4483.0,
+      "platelet_count_per_uL": 151654.0
+    }
+  },
+  {
+    "patient_id": "SYN-015",
+    "age": 73,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Negative",
+      "HER2_status": "Positive"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "chemotherapy",
+      "targeted therapy (anti-HER2)",
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 5924.0,
+      "platelet_count_per_uL": 282529.0
+    }
+  },
+  {
+    "patient_id": "SYN-016",
+    "age": 43,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 1,
+    "prior_treatments": null,
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 6422.0,
+      "platelet_count_per_uL": 172636.0
+    }
+  },
+  {
+    "patient_id": "SYN-017",
+    "age": 53,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Negative",
+      "HER2_status": "Positive"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "chemotherapy",
+      "surgery",
+      "hormone therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 5794.0,
+      "platelet_count_per_uL": 172519.0
+    }
+  },
+  {
+    "patient_id": "SYN-018",
+    "age": 69,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 1,
+    "prior_treatments": [
+      "surgery",
+      "chemotherapy",
+      "hormone therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1034.0,
+      "platelet_count_per_uL": 92428.0
+    }
+  },
+  {
+    "patient_id": "SYN-019",
+    "age": 78,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "III",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog_performance_status": 2,
+    "prior_treatments": [
+      "chemotherapy",
+      "immunotherapy",
+      "radiation therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 835.0,
+      "platelet_count_per_uL": 85751.0
+    }
+  },
+  {
+    "patient_id": "SYN-020",
+    "age": 31,
+    "sex": "Female",
+    "menopausal_status": "Premenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Equivocal"
+    },
+    "ecog_performance_status": 0,
+    "prior_treatments": [
+      "surgery"
+    ],
+    "key_lab_values": null
+  }
+]
