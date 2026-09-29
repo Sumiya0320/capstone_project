@@ -1,0 +1,59 @@
+{
+  "trial_id": "NCT05950945",
+  "official_title": "Trastuzumab Deruxtecan (T-DXd) in Patients Who Have Hormone Receptor-negative and Hormone Receptor-positive HER2-low or HER2 IHC 0 Metastatic Breast Cancer",
+  "status": "RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT05950945",
+
+  "eligibility": {
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "sex": "ALL",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "Sign and date the main informed consent form
+Must agree to provide a newly obtained or archival baseline biopsy from primary and/or metastatic lesion.
+Pathologically documented Breast Cancer (BC) tumor
+
+Is unresectable and/or metastatic.
+Is hormone receptor-negative or hormone receptor-positive.
+
+Must include percentage of positively stained cells to characterize if hormone receptor-positive or -negative.
+Has confirmed HER2 IHC 1+ or IHC 2+/ISH- (HER2-low) status or HER2 IHC 0 status as determined according to ASCO CAP 2018 guidelines1 based on sample collected during Tissue Screening as described above.
+Was never previously HER2-positive (IHC 3+ or IHC 2+/ISH+) on prior pathology testing (per ASCO CAP guidelines).
+Was never previously treated with anti-HER2 therapy in the metastatic setting.
+Has had at least one and up to two prior lines of therapy in the metastatic setting.
+
+In participants with hormone receptor-positive HER2-low metastatic BC (Cohort 3):
+
+Has recurrent disease <2 years from the initiation of adjuvant ET OR
+Has disease progression on CDK4/6 inhibitor-based regimen within 12 months of completion of adjuvant therapy with a CDK4/6 inhibitor OR
+Has disease progression within the first 12 months of CDK4/6 in the first line metastatic setting
+Presence of at least one measurable lesion based on computed tomography or magnetic resonance imaging.
+Participants with brain metastases are allowed in the study. The brain lesion(s) should be small (<2 cm), untreated, asymptomatic, not requiring urgent medical intervention, and are asymptomatic and clinically stable.
+Has an Eastern Cooperative Oncology Group performance status of 0 or 1.
+Has a minimum life expectancy of 12 weeks at Screening.
+Has a left ventricular ejection fraction ≥50% within 28 days before enrollment.
+Has adequate organ and bone marrow function within 28 days before enrollment.
+Has adequate treatment washout period before enrollment.
+Male and female subjects of reproductive/childbearing potential must agree to use a highly effective form of contraception."
+    ],
+    "exclusion_criteria": [
+      "Prior treatment with an antibody drug conjugate (ADC).
+Uncontrolled or significant cardiovascular disease.
+Has a corrected QT interval prolongation.
+Has a history of (non-infectious) interstitial lung disease (ILD)/pneumonitis that required steroids, has current ILD/pneumonitis, or where suspected ILD/pneumonitis cannot be ruled out by imaging at Screening.
+Has spinal cord compression or clinically active central nervous system metastases.
+Has multiple primary malignancies within 3 years, except adequately resected non-melanoma skin cancer, curatively treated in situ disease, other solid tumors curatively treated, or contralateral BC.
+Has a history of severe hypersensitivity reactions to either the drug substances or inactive ingredients in the drug product.
+Has a history of severe hypersensitivity reactions to other monoclonal antibodies.
+Has an uncontrolled infection requiring intravenous (IV) antibiotics, antivirals, or antifungals.
+Active primary immunodeficiency, known uncontrolled active human immunodeficiency virus (HIV) infection, or active hepatitis B or C infection.
+Has history of receiving a live, attenuated vaccine (messenger RNA and replication-deficient adenoviral vaccines are not considered attenuated live vaccines) within 30 days prior to the first exposure to study drug.
+Has unresolved toxicities from previous anticancer therapy, defined as toxicities (other than alopecia) not yet resolved to Grade ≤1 or baseline.
+Is pregnant or breastfeeding or planning to become pregnant.
+Lung-specific intercurrent clinically significant illnesses.
+Any autoimmune, connective tissue, or inflammatory disorders.
+Prior complete pneumonectomy."
+    ]
+  }
+}

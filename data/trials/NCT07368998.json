@@ -1,0 +1,31 @@
+
+{
+  "trial_id": "NCT07368998",
+  "official_title": "To Study the Effect of Inavolisib in Combination With Fulvestrant in Participants With Breast Cancer (optINAVO)",
+  "status": "RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT07368998",
+
+  "eligibility": {
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "sex": "ALL",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "Documented ER +/ HER2- tumor according to American Society of Clinical Oncology/College of American Pathologists (ASCO/CAP) guidelines
+Disease progression after or during treatment with a combination of CDK4/6i and endocrine therapy: <= 1 prior lines of systemic therapy in the locally advanced (recurrent or progressed) or metastatic setting
+Measurable or evaluable disease per Response Evaluation Criteria in Solid Tumors version 1.1 (RECIST v1.1)
+Participants for whom endocrine-based therapy is recommended and treatment with cytotoxic chemotherapy is not indicated at time of entry into the study, as per national or local treatment guidelines
+Confirmation of biomarker eligibility: presence of >= 1 study-eligible PIK3CA mutation
+Life expectancy of > 6 months
+Ability, in the investigator's judgment, and willingness to comply with all study -related procedures, including completion of patient-reported outcomes"
+    ],
+    "exclusion_criteria": [
+      "Metaplastic breast cancer
+Prior treatment with chemotherapy in the recurrent locally advanced/metastatic setting
+Type 2 diabetes requiring ongoing systemic treatment at the time of study entry; or any history of Type 1 diabetes
+Prior treatment with PI3K/Akt/mTOR inhibitors in the recurrent locally advanced/metastatic setting
+Requirement for daily supplemental oxygen
+Symptomatic active lung disease, including pneumonitis"
+    ]
+  }
+}

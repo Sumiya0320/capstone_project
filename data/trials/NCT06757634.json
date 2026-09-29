@@ -1,0 +1,44 @@
+
+{
+  "trial_id": "NCT06757634",
+  "official_title": "Phase 3 Study of Gedatolisib as First-Line Treatment for Patients With HR-Positive, HER2-Negative Advanced Breast Cancer (VIKTORIA-2)",
+  "status": "RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT06757634",
+
+  "eligibility": {
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "sex": "ALL",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "Histologically or cytologically confirmed diagnosis of metastatic or locally advanced HR+/HER2- breast cancer
+Adult females, pre- and/or post-menopausal, and adult males. Pre-menopausal (and peri-menopausal) women can be enrolled if amenable to treatment with an LHRH agonist. Patients are to have commenced concomitant treatment with LHRH agonist prior to or on Cycle 1, Day 1 and must be willing to continue for the duration of the study.
+Negative pregnancy test for females of childbearing potential. Female subjects who are not surgically sterile must use a medically effective contraceptive method from screening until 2 years after the last dose of study treatment.
+Progression of disease during or within 12 months of completing (neo)adjuvant endocrine therapy (ET) or progression of disease after 12 months of completing (neo)adjuvant ET.
+Adequate archival, fresh tumor tissue, or liquid biopsy for the analysis of PIK3CA mutational status.
+Permitted prior therapies:
+
+(neo)adjuvant fulvestrant only if the treatment duration < 6 months
+(neo)adjuvant chemotherapy
+(neo)adjuvant CDK4/6 inhibitor, unless PD was on or within 6 months of discontinuation of CDK4/6i
+i. Study 1: if disease progression was on or within event occurred >6 months of discontinuation after completion of CDK4/6 inhibitor portion of treatment.
+
+ii. Study 2: if disease progression event occurred >12 months after completion of CDK4/6 inhibitor portion of treatment.
+
+Subject has radiologically measurable disease according to RECIST v1.1, per local assessment. Patients with nonmeasurable bone-only disease are not eligible. Patients with bone-only disease that has lytic or mixed lytic/blastic lesions and at least one measurable soft tissue component per RECIST v1.1 may be eligible.
+Eastern Cooperative Oncology Group (ECOG) performance status of 0-2.
+Life expectancy of at least >6 months.
+Adequate bone marrow, hepatic, renal and coagulation function."
+    ],
+    "exclusion_criteria": [
+      "Concurrent malignancies other than adequately treated non-melanoma skin cancer. Previous malignancies in remission but curatively treated with no evidence of disease progression and judged by local Investigator to be at low risk of impacting health or survival while on study.
+Prior treatment with a phosphoinositide 3-kinase (PI3K) inhibitor, a protein kinase B (Akt) inhibitor, or a mechanistic target of rapamycin (mTOR) inhibitor or any other selective estrogen receptor degrader (SERD), except fulvestrant, used in (neo)adjuvant setting.
+Prior treatment with systemic anticancer therapy for ABC
+Subjects with type 1 diabetes, or uncontrolled type 2 diabetes requiring daily insulin therapy.
+Known and untreated, or active, brain or leptomeningeal metastases
+History of clinically significant cardiovascular abnormalities
+Known, clinically significant ophthalmic conditions
+History of drug-induced symptomatic interstitial lung disease (pneumonitis) or hepatitis"
+    ]
+  }
+}

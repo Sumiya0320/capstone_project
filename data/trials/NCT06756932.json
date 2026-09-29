@@ -1,0 +1,31 @@
+
+{
+  "trial_id": "NCT06756932",
+  "official_title": "BGB-21447 (Bcl-2 Inhibitor) Combinations for Adults With Hormone-Receptor Positive (HR+)/​Human Epidermal Growth Factor Receptor 2 Negative (HER2-) Metastatic Breast Cancer",
+  "status": "RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT06756932",
+
+  "eligibility": {
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "sex": "ALL",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "Histologically or cytologically confirmed HR+/HER2- metastatic breast cancer. Part 1A and 1B: Participants must have received ≥ 1 prior line(s) of treatment for advanced/metastatic disease, including prior endocrine therapy and CDK4/6 inhibitor in either the adjuvant or advanced/metastatic setting. Part 2: Participants must have received 1-3 prior line(s) of treatment for advanced/metastatic disease, including prior endocrine therapy and CDK4/6 inhibitor in either the adjuvant or advanced/metastatic setting.
+Female participants will be required (either continue ongoing or initiate as soon as feasible) to have ovarian function suppression using gonadotropin-releasing hormone (GnRH) agonists (such as goserelin) or be postmenopausal.
+Male participants may be required to use GnRH agonists when being treated with fulvestrant at the discretion of the investigator.
+Participants must have a stable Eastern Cooperative Oncology Group (ECOG) Performance Status of ≤ 1.
+Adequate organ function.
+Female participants of childbearing potential and nonsterile male participants with female partners of childbearing potential must be willing to use a highly effective method of birth control for the duration of the study and for 7 days after the last dose of BGB-21447, 6 months after the last dose of BGB-43395, and 2 years after the last dose of fulvestrant.
+Food effect substudy only: Participants who are able and willing to fast overnight (≥ 10 hours) and consume a high-fat meal."
+    ],
+    "exclusion_criteria": [
+      "Prior Bcl-2 inhibitor exposure. For triplet combination cohorts only: Prior therapy selectively targeting CDK4.
+Known leptomeningeal disease or uncontrolled, untreated brain metastases.
+Any malignancy ≤ 3 years before the first dose of study treatment(s) except for the specific cancer under investigation in this study and any locally recurring cancer that has been treated with curative intent (eg, treated papillary thyroid carcinoma, resected basal or squamous cell skin cancer, superficial bladder cancer, or carcinoma in situ of the cervix or breast).
+For Part 1B: Uncontrolled diabetes.
+History of hepatitis B or active Hepatitis C infection
+China Only: Untreated chronic hepatitis B or chronic hepatitis B virus (HBV) carriers with HBV DNA > 500 IU/ml (or > 2500 copies/ml) at screening."
+    ]
+  }
+}

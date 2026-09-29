@@ -1,0 +1,28 @@
+
+{
+  "trial_id": "NCT07062965",
+  "official_title": "A Study to Learn About the Study Medicine Called PF-07248144 in Combination With Fulvestrant in People With HR-positive, HER2-negative Advanced or Metastatic Breast Cancer Who Progressed After a Prior Line of Treatment.",
+  "status": "RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT07062965",
+
+  "eligibility": {
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "sex": "ALL",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "Confirmed diagnosis of HR-positive HER2-negative breast cancer with evidence of locally advanced or metastatic disease, which is not amenable to surgical resection or radiation therapy with curative intent.
+Prior CDK4/6 inhibitor therapy in combination with endocrine therapy in advance metastatic setting or in adjuvant setting with documented progression during or within 12 months after the last dose of CDK4/6i.
+Participants are eligible if they previously received CDK4/6i or ET as a monotherapy, or in combination for rechallenge therapy in the advance or metastatic setting; have received prior therapy targeting estrogen receptor 1 (ESR1) or breast cancer gene (BRCA)1/2.
+Measurable disease evaluable per Response Evaluation Criterion in Solid Tumors (RECIST) v.1.1 or non-measurable bone-only disease
+Eastern Cooperative Oncology Group (ECOG) Performance Status (PS) 0 or 1."
+    ],
+    "exclusion_criteria": [
+      "Documented detectable PIK3CA/AKT1/PTEN alterations in tissue
+Received greater than two prior lines of systemic therapy in the advance or metastatic setting
+Had received any prior chemotherapy, including antibody drug conjugates (ADCs), in advance or metastatic setting. Participants who have previously received chemotherapy in the (neo)adjuvant setting are not excluded from the study.
+Any medical or psychiatric condition that may increase the risk of study participation or make the participant inappropriate for the study.
+Renal impairment, hepatic dysfunction, or hematologic abnormalities."
+    ]
+  }
+}
