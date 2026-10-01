@@ -1,0 +1,81 @@
+[
+  {
+    "test_id": "TC001",
+    "patient": {
+      "age": 55,
+      "sex": "Female",
+      "condition": "Breast Cancer",
+      "biomarkers": "HER2-negative"
+    },
+    "criterion": {
+      "criterion_id": "INC_01",
+      "type": "inclusion",
+      "text": "Participants must be 18 years of age or older."
+    },
+    "expected_result": "MET"
+  },
+
+  {
+    "test_id": "TC002",
+    "patient": {
+      "age": 16,
+      "sex": "Female",
+      "condition": "Breast Cancer",
+      "biomarkers": "HER2-negative"
+    },
+    "criterion": {
+      "criterion_id": "INC_02",
+      "type": "inclusion",
+      "text": "Participants must be 18 years of age or older."
+    },
+    "expected_result": "NOT_MET"
+  },
+
+  {
+    "test_id": "TC003",
+    "patient": {
+      "age": 55,
+      "sex": "Female",
+      "condition": "Breast Cancer",
+      "biomarkers": "HER2-negative"
+    },
+    "criterion": {
+      "criterion_id": "INC_03",
+      "type": "inclusion",
+      "text": "ECOG performance status must be 0 or 1."
+    },
+    "expected_result": "UNKNOWN"
+  },
+
+  {
+    "test_id": "TC004",
+    "patient": {
+      "age": 47,
+      "sex": "Female",
+      "condition": "Breast Cancer",
+      "biomarkers": "HER2-negative"
+    },
+    "criterion": {
+      "criterion_id": "INC_04",
+      "type": "inclusion",
+      "text": "Participants must have HER2-negative breast cancer."
+    },
+    "expected_result": "MET"
+  },
+
+  {
+    "test_id": "TC005",
+    "patient": {
+      "age": 47,
+      "sex": "Female",
+      "condition": "Breast Cancer",
+      "biomarkers": "HER2-positive"
+    },
+    "criterion": {
+      "criterion_id": "INC_05",
+      "type": "inclusion",
+      "text": "Participants must have HER2-negative breast cancer."
+    },
+    "expected_result": "NOT_MET"
+  }
+]
