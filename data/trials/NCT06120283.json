@@ -1,0 +1,32 @@
+
+{
+  "trial_id": "NCT06120283",
+  "official_title": "BGB-43395 Alone or as Part of Combination Therapies in Participants With Breast Cancer and Other Advanced Solid Tumors",
+  "status": "RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT06120283",
+
+  "eligibility": {
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "sex": "ALL",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "Phase 1a (Dose Escalation): Participants with histologically or cytologically confirmed advanced, metastatic, or unresectable solid tumors associated with dependency on CDK4, including HR+ breast cancer, ovarian cancer, endometrial cancer, non-small cell lung cancer, and others. For combination with elacestrant, participants must have received at least 1 prior line of treatment for advanced/metastatic disease including prior endocrine therapy and CDK4/6 inhibitor in either the adjuvant or advanced/metastatic setting.
+Phase 1a Safety Expansion: For combination with fulvestrant in regions where approved and available, participants with HR+ breast cancer must have received at least 1 prior line of treatment including endocrine therapy and a CDK4/6 inhibitor. For combination with letrozole, participants must be CDK4/6 inhibitor treatment naïve and have not received any previous systemic treatment for advanced disease.
+Phase 1b: Participants with HR+/HER2- breast cancer.
+Phase 1b: For combination with fulvestrant, participants with HR+/HER2- breast cancer enrolled in regions where CDK4/6 inhibitors are approved and available must have received 1-2 lines of therapy for advanced/metastatic disease including endocrine therapy and a CDK4/6 inhibitor. Participants can have received up to 2 lines of prior cytotoxic chemotherapy for advanced disease. For combination cohorts with letrozole, participants must be CDK4/6 inhibitor treatment naïve and have not received any previous systemic treatment for advanced disease.
+Stable Eastern Cooperative Oncology Group (ECOG) Performance Status ≤ 1.
+Female participants with metastatic HR+/HER2- breast cancer must be postmenopausal or receiving ovarian function suppression treatment.
+Adequate organ function without symptomatic visceral disease."
+    ],
+    "exclusion_criteria": [
+      "Known leptomeningeal disease or uncontrolled, untreated brain metastases.
+Any malignancy ≤ 3 years before the first dose of study treatment(s) except for the specific cancer under investigation in this study and any locally recurring cancer that has been treated with curative intent (eg, resected basal or squamous cell skin cancer, superficial bladder cancer, or carcinoma in situ of the cervix or breast).
+Uncontrolled diabetes.
+Infection requiring systemic antibacterial, antifungal, or antiviral therapy ≤ 28 days before the first dose of study drug(s), or symptomatic COVID-19 infection.
+Participants with untreated chronic hepatitis B or chronic hepatitis B virus (HBV) carriers with HBV DNA ≥ 500 IU/mL (or ≥ 2500 copies/mL) at screening.
+Participants with active hepatitis C infection.
+Prior allogeneic stem cell transplantation, or organ transplantation."
+    ]
+  }
+}
