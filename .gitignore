@@ -1,3 +1,9 @@
+
+.venv/
+__pycache__/
+*.pyc
+.env
+
 .env
 .env.*
 !.env.example
@@ -19,3 +25,4 @@ env/
 ENV/
 .DS_Store
 .vscode/
+
