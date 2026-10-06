@@ -1,0 +1,548 @@
+[
+  {
+    "patient_id": "SYN-001",
+    "age": 68,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 3,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 64.0,
+    "life_expectancy_weeks": 196,
+    "prior_metastatic_lines": 1,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1756.0,
+      "platelet_count_per_uL": 171550.0
+    }
+  },
+  {
+    "patient_id": "SYN-002",
+    "age": 42,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "III",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": 0,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 56.0,
+    "life_expectancy_weeks": 44,
+    "prior_metastatic_lines": 4,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "surgery",
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3359.0,
+      "platelet_count_per_uL": 229110.0
+    }
+  },
+  {
+    "patient_id": "SYN-003",
+    "age": 63,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 0,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 62.0,
+    "life_expectancy_weeks": 54,
+    "prior_metastatic_lines": 1,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "radiation therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 5791.0,
+      "platelet_count_per_uL": 349291.0
+    }
+  },
+  {
+    "patient_id": "SYN-004",
+    "age": 45,
+    "sex": "Female",
+    "menopausal_status": "Premenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "III",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 0,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 67.0,
+    "life_expectancy_weeks": 29,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 5365.0,
+      "platelet_count_per_uL": 162866.0
+    }
+  },
+  {
+    "patient_id": "SYN-005",
+    "age": 73,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": null,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 68.0,
+    "life_expectancy_weeks": 69,
+    "prior_metastatic_lines": 4,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "chemotherapy",
+      "radiation therapy",
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1137.0,
+      "platelet_count_per_uL": 69196.0
+    }
+  },
+  {
+    "patient_id": "SYN-006",
+    "age": 59,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 1,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 63.0,
+    "life_expectancy_weeks": 187,
+    "prior_metastatic_lines": 2,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 4520.0,
+      "platelet_count_per_uL": 257651.0
+    }
+  },
+  {
+    "patient_id": "SYN-007",
+    "age": 62,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 4,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 63.0,
+    "life_expectancy_weeks": 108,
+    "prior_metastatic_lines": 2,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "targeted therapy (anti-HER2)",
+      "chemotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 2121.0,
+      "platelet_count_per_uL": 293819.0
+    }
+  },
+  {
+    "patient_id": "SYN-008",
+    "age": 77,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Positive"
+    },
+    "ecog": 1,
+    "her2_status": "Positive",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 67.0,
+    "life_expectancy_weeks": 149,
+    "prior_metastatic_lines": 2,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "chemotherapy",
+      "surgery"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1140.0,
+      "platelet_count_per_uL": 62756.0
+    }
+  },
+  {
+    "patient_id": "SYN-009",
+    "age": 58,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Positive",
+      "HER2_status": "Equivocal"
+    },
+    "ecog": 2,
+    "her2_status": "Equivocal",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 63.0,
+    "life_expectancy_weeks": 70,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": true,
+    "prior_treatments": [
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 6476.0,
+      "platelet_count_per_uL": 299472.0
+    }
+  },
+  {
+    "patient_id": "SYN-010",
+    "age": 63,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "0",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Positive"
+    },
+    "ecog": 0,
+    "her2_status": "Positive",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 48.0,
+    "life_expectancy_weeks": 134,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "surgery",
+      "targeted therapy (anti-HER2)"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1201.0,
+      "platelet_count_per_uL": 67498.0
+    }
+  },
+  {
+    "patient_id": "SYN-011",
+    "age": 54,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "III",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": null
+    },
+    "ecog": 3,
+    "her2_status": null,
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 60.0,
+    "life_expectancy_weeks": 76,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 6422.0,
+      "platelet_count_per_uL": 172636.0
+    }
+  },
+  {
+    "patient_id": "SYN-012",
+    "age": 36,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": 3,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 46.0,
+    "life_expectancy_weeks": 117,
+    "prior_metastatic_lines": 1,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "targeted therapy (anti-HER2)",
+      "surgery",
+      "immunotherapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 4249.0,
+      "platelet_count_per_uL": 153394.0
+    }
+  },
+  {
+    "patient_id": "SYN-013",
+    "age": 53,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "II",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Equivocal"
+    },
+    "ecog": 2,
+    "her2_status": "Equivocal",
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 56.0,
+    "life_expectancy_weeks": 28,
+    "prior_metastatic_lines": 2,
+    "brain_metastases": true,
+    "prior_treatments": [
+      "hormone therapy",
+      "targeted therapy (anti-HER2)"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3985.0,
+      "platelet_count_per_uL": 193677.0
+    }
+  },
+  {
+    "patient_id": "SYN-014",
+    "age": 65,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Positive"
+    },
+    "ecog": 0,
+    "her2_status": "Positive",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 64.0,
+    "life_expectancy_weeks": 162,
+    "prior_metastatic_lines": 1,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "hormone therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1334.0,
+      "platelet_count_per_uL": 68618.0
+    }
+  },
+  {
+    "patient_id": "SYN-015",
+    "age": 44,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": 3,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 43.0,
+    "life_expectancy_weeks": 46,
+    "prior_metastatic_lines": 3,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1173.0,
+      "platelet_count_per_uL": 79705.0
+    }
+  },
+  {
+    "patient_id": "SYN-016",
+    "age": 43,
+    "sex": "Female",
+    "menopausal_status": "Premenopausal",
+    "diagnosis": "Triple-negative breast carcinoma",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": 2,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 47.0,
+    "life_expectancy_weeks": 240,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": null,
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 4318.0,
+      "platelet_count_per_uL": 364304.0
+    }
+  },
+  {
+    "patient_id": "SYN-017",
+    "age": 45,
+    "sex": "Female",
+    "menopausal_status": "Premenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": 3,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 46.0,
+    "life_expectancy_weeks": 80,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "none"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 1054.0,
+      "platelet_count_per_uL": 69684.0
+    }
+  },
+  {
+    "patient_id": "SYN-018",
+    "age": 73,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive ductal carcinoma",
+    "cancer_stage": "I",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 1,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 68.0,
+    "life_expectancy_weeks": 66,
+    "prior_metastatic_lines": 2,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "hormone therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 985.0,
+      "platelet_count_per_uL": 91464.0
+    }
+  },
+  {
+    "patient_id": "SYN-019",
+    "age": 50,
+    "sex": "Female",
+    "menopausal_status": "Perimenopausal",
+    "diagnosis": "Inflammatory breast carcinoma",
+    "cancer_stage": "III",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Equivocal"
+    },
+    "ecog": 2,
+    "her2_status": "Equivocal",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 59.0,
+    "life_expectancy_weeks": 192,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "surgery",
+      "chemotherapy",
+      "radiation therapy"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3617.0,
+      "platelet_count_per_uL": 304079.0
+    }
+  },
+  {
+    "patient_id": "SYN-020",
+    "age": 82,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Invasive lobular carcinoma",
+    "cancer_stage": "IV",
+    "biomarkers": {
+      "ER_status": "Negative",
+      "PR_status": "Negative",
+      "HER2_status": "Negative"
+    },
+    "ecog": 2,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Negative",
+    "lvef_percent": 70.0,
+    "life_expectancy_weeks": 177,
+    "prior_metastatic_lines": 1,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "chemotherapy"
+    ],
+    "key_lab_values": null
+  }
+]

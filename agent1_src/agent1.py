@@ -1,8 +1,8 @@
-"""Agent 1 (Gemini version): reads a trial's eligibility text and saves it as a list of rules (JSON).
+"""Agent 1 (Claude version): reads a trial's eligibility text and saves it as a list of rules (JSON).
 
 Run from the repo root:
-    python agent1/agent1.py data/trials/NCT05950945.json    # one trial
-    python agent1/agent1.py --all                           # every trial in data/trials/
+    python agent1_src/agent1.py data/trials/NCT05950945.json    # one trial
+    python agent1_src/agent1.py --all                           # every trial in data/trials/
 Output: data/rules/raw/<trial_id>.json
 """
 import json
@@ -12,12 +12,11 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types
+import anthropic
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "data" / "rules" / "raw"
-MODEL = os.getenv("AGENT1_MODEL", "gemini-3.8-flash")  # change in .env if this model name stops working
+MODEL = os.getenv("AGENT1_MODEL", "claude-haiku-4-5-20251001")  # change in .env if this model name stops working
 
 # Edit this list so the names match the keys in your synthetic patient JSON.
 PATIENT_FIELDS = ("age, sex, ecog, lvef_percent, life_expectancy_weeks, prior_metastatic_lines, "
@@ -51,33 +50,38 @@ Example: "Has an ECOG performance status of 0 or 1." ->
 {{"type":"inclusion","rule_text":"ECOG 0 or 1","source_text":"Has an ECOG performance status of 0 or 1.","check_method":"python","field":"ecog","operator":"in","value":"[0, 1]","applies_if":null,"logic_group":null,"notes":null}}
 Example: "Prior treatment with an antibody drug conjugate." ->
 {{"type":"exclusion","rule_text":"Prior antibody drug conjugate treatment","source_text":"Prior treatment with an antibody drug conjugate.","check_method":"llm","field":null,"operator":null,"value":null,"applies_if":null,"logic_group":null,"notes":null}}
-"""
 
-S = types.Schema
-T = types.Type
+Call the extract_rules tool exactly once with the full list of rules."""
 
-
-def text(nullable=True):
-    return S(type=T.STRING, nullable=nullable)
-
-
-RULE = S(
-    type=T.OBJECT,
-    properties={
-        "type": S(type=T.STRING, enum=["inclusion", "exclusion"]),
-        "rule_text": text(False),
-        "source_text": text(False),
-        "check_method": S(type=T.STRING, enum=["python", "llm"]),
-        "field": text(),
-        "operator": text(),
-        "value": text(),
-        "applies_if": text(),
-        "logic_group": text(),
-        "notes": text(),
+# JSON Schema for the "extract_rules" tool -- Claude is forced to call this
+# tool and fill in input matching this schema, which is how we get reliable
+# structured JSON back (the equivalent of Gemini's response_schema).
+RULE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "type": {"type": "string", "enum": ["inclusion", "exclusion"]},
+        "rule_text": {"type": "string"},
+        "source_text": {"type": "string"},
+        "check_method": {"type": "string", "enum": ["python", "llm"]},
+        "field": {"type": ["string", "null"]},
+        "operator": {"type": ["string", "null"]},
+        "value": {"type": ["string", "null"]},
+        "applies_if": {"type": ["string", "null"]},
+        "logic_group": {"type": ["string", "null"]},
+        "notes": {"type": ["string", "null"]},
     },
-    required=["type", "rule_text", "source_text", "check_method"],
-)
-SCHEMA = S(type=T.OBJECT, properties={"rules": S(type=T.ARRAY, items=RULE)}, required=["rules"])
+    "required": ["type", "rule_text", "source_text", "check_method"],
+}
+
+EXTRACT_RULES_TOOL = {
+    "name": "extract_rules",
+    "description": "Save the full flat list of checkable eligibility rules extracted from the trial criteria.",
+    "input_schema": {
+        "type": "object",
+        "properties": {"rules": {"type": "array", "items": RULE_SCHEMA}},
+        "required": ["rules"],
+    },
+}
 
 
 def as_text(x):
@@ -89,18 +93,18 @@ def extract_rules(client, trial):
     criteria = (f"Minimum age: {e['minimum_age']}\nMaximum age: {e['maximum_age']}\nSex: {e['sex']}\n\n"
                 f"INCLUSION CRITERIA\n{as_text(e['inclusion_criteria'])}\n\n"
                 f"EXCLUSION CRITERIA\n{as_text(e['exclusion_criteria'])}")
-    resp = client.models.generate_content(
+
+    response = client.messages.create(
         model=MODEL,
-        contents=criteria,
-        config=types.GenerateContentConfig(
-            system_instruction=PROMPT,
-            response_mime_type="application/json",
-            response_schema=SCHEMA,
-            temperature=0,
-            max_output_tokens=16000,
-        ),
+        max_tokens=16000,
+        system=PROMPT,
+        messages=[{"role": "user", "content": criteria}],
+        tools=[EXTRACT_RULES_TOOL],
+        tool_choice={"type": "tool", "name": "extract_rules"},
     )
-    return criteria, json.loads(resp.text)["rules"]
+
+    tool_use_block = next(b for b in response.content if b.type == "tool_use")
+    return criteria, tool_use_block.input["rules"]
 
 
 def run_trial(client, path):
@@ -131,13 +135,13 @@ def run_trial(client, path):
 
 if __name__ == "__main__":
     load_dotenv()
-    key = os.getenv("GEMINI_API_KEY")
+    key = os.getenv("ANTHROPIC_API_KEY")
     if not key:
-        sys.exit("GEMINI_API_KEY not found. Put it in a .env file.")
+        sys.exit("ANTHROPIC_API_KEY not found. Put it in a .env file.")
     if len(sys.argv) < 2:
-        sys.exit("usage: python agent1/agent1.py <trial.json> | --all")
+        sys.exit("usage: python agent1_src/agent1.py <trial.json> | --all")
     paths = sorted((ROOT / "data" / "trials").glob("*.json")) if sys.argv[1] == "--all" else [sys.argv[1]]
-    client = genai.Client(api_key=key)
+    client = anthropic.Anthropic(api_key=key)
     for p in paths:
         try:
             run_trial(client, p)
