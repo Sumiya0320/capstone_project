@@ -65,6 +65,7 @@ Requires (only if you want the LLM path to actually run):
 
 import json
 import os
+import time
 
 # --- LLM setup (optional; only needed for "llm" rules and applies_if rules) -
 try:
@@ -80,6 +81,13 @@ try:
     _client = anthropic.Anthropic(api_key=API_KEY) if API_KEY else None
 except ImportError:
     _client = None
+
+# Retry settings for LLM-checked rules: a long run makes hundreds/thousands
+# of API calls, so a transient rate limit or server hiccup partway through
+# is expected, not exceptional -- retry it with backoff instead of silently
+# recording it as "Unknown" (which would look identical to a genuine data gap).
+LLM_MAX_RETRIES = 5
+LLM_BASE_DELAY = 5  # seconds; doubles each retry (5, 10, 20, 40, 80)
 
 
 def get_nested(record: dict, dotted_field: str):
@@ -183,20 +191,47 @@ Respond with EXACTLY two lines, nothing else:
 RESULT: <Met|Not Met|Unknown|Not Applicable>
 REASON: <one short sentence>"""
 
-    try:
-        response = _client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=150,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        text = response.content[0].text.strip()
-        result_line = next(l for l in text.splitlines() if l.startswith("RESULT:"))
-        reason_line = next(l for l in text.splitlines() if l.startswith("REASON:"))
-        result = result_line.split("RESULT:", 1)[1].strip()
-        reason = reason_line.split("REASON:", 1)[1].strip()
-        return result, reason
-    except Exception as e:
-        return "Unknown", f"LLM call failed ({e}) -- needs manual review"
+    last_error = None
+    for attempt in range(1, LLM_MAX_RETRIES + 1):
+        try:
+            response = _client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=150,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = response.content[0].text.strip()
+            result_line = next(l for l in text.splitlines() if l.startswith("RESULT:"))
+            reason_line = next(l for l in text.splitlines() if l.startswith("REASON:"))
+            result = result_line.split("RESULT:", 1)[1].strip()
+            reason = reason_line.split("REASON:", 1)[1].strip()
+            return result, reason
+        except Exception as e:
+            last_error = e
+            # Only retry errors that look temporary (rate limit, timeout,
+            # connection drop, server overload/5xx). Anything else (e.g. a
+            # malformed request) fails immediately instead of retrying
+            # something that will never succeed.
+            status_code = getattr(e, "status_code", None)
+            is_transient = (
+                status_code in (429, 500, 502, 503, 529)
+                or "rate" in str(e).lower()
+                or "timeout" in str(e).lower()
+                or "connection" in str(e).lower()
+                or "overloaded" in str(e).lower()
+            )
+            if not is_transient or attempt == LLM_MAX_RETRIES:
+                break
+            delay = LLM_BASE_DELAY * (2 ** (attempt - 1))
+            print(f"    [rule {rule.get('rule_id')}: LLM call failed (attempt {attempt}/{LLM_MAX_RETRIES}): "
+                  f"{e} -- retrying in {delay}s]", flush=True)
+            time.sleep(delay)
+
+    # All retries exhausted (or a non-transient error) -- this is flagged
+    # distinctly from a genuine "patient data doesn't have this info" Unknown,
+    # so you can tell the difference later when reading match_results.csv.
+    print(f"    [rule {rule.get('rule_id')}: LLM call FAILED after {attempt} attempt(s): {last_error}]",
+          flush=True)
+    return "Unknown", f"[API ERROR -- not a real data gap] LLM call failed: {last_error}"
 
 
 def match_patient_to_trial(patient: dict, trial: dict):
