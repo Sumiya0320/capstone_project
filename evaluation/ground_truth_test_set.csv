@@ -1,11 +1,11 @@
 patient_id,trial_id,expected_met,expected_not_met,expected_unknown,expected_not_applicable,expected_overall,reviewed_by,reviewer_agrees,review_notes
-SYN-002,NCT07062965,3,3,5,0,Excluded,,,
-SYN-004,NCT07062965,4,2,5,0,Excluded,,,
-SYN-005,NCT05950945,6,1,28,1,Excluded,,,"Corrected for a bug in collapse_logic_groups(): an all-'Not Applicable' logic_group (Cohort 3, rules 12/13/14) currently collapses to 'Not Met' instead of 'Not Applicable' because the function's three-valued-OR has no branch for that case. Overall verdict is unaffected (rule 11 alone already makes this Excluded), but the met/not_met/unknown/na breakdown from a real run will NOT match this row until that function is fixed. See README."
-SYN-011,NCT06625775,3,1,16,0,Excluded,,,
-SYN-013,NCT06756932,2,2,13,0,Excluded,,,
-SYN-003,NCT06756932,5,0,12,0,Needs Review,,,
-SYN-007,NCT06120283,2,1,15,0,Excluded,,,
-SYN-016,NCT07358377,2,0,22,0,Needs Review,,,
-SYN-020,NCT06982521,3,2,15,0,Excluded,,,
-SYN-010,NCT07368998,4,2,10,0,Excluded,,,
+SYN-002,NCT07062965,3,3,5,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-004,NCT07062965,4,2,5,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-005,NCT05950945,6,1,28,1,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),"Corrected for a bug in collapse_logic_groups(): an all-'Not Applicable' logic_group (Cohort 3, rules 12/13/14) currently collapses to 'Not Met' instead of 'Not Applicable' because the function's three-valued-OR has no branch for that case. Overall verdict is unaffected (rule 11 alone already makes this Excluded), but the met/not_met/unknown/na breakdown from a real run will NOT match this row until that function is fixed. See README. | Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline."
+SYN-011,NCT06625775,3,1,16,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-013,NCT06756932,2,2,13,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-003,NCT06756932,5,0,12,0,Needs Review,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-007,NCT06120283,2,1,15,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-016,NCT07358377,2,0,22,0,Needs Review,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-020,NCT06982521,3,2,15,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
+SYN-010,NCT07368998,4,2,10,0,Excluded,"Team (Sumiya, Anujin, Danny)",Agreed (pre-deadline placeholder),Marked team-agreed before the Oct deadline due to time pressure -- not yet individually reviewed line-by-line by Anujin/Danny. Revisit after deadline.
