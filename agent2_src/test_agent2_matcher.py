@@ -306,6 +306,70 @@ def test_match_patient_to_trial_routes_applies_if_rule_to_llm_path():
         m._client = original_client
 
 
+# ---------------------------------------------------------------------------
+# check_llm_rule: Claude answers about the CONDITION (Yes/No/Unknown) and the
+# code converts it to Met/Not Met. A fake client is used, so no API calls.
+# ---------------------------------------------------------------------------
+
+class _FakeBlock:
+    type = "text"
+    def __init__(self, text):
+        self.text = text
+
+
+class _FakeResponse:
+    stop_reason = "end_turn"
+    def __init__(self, text):
+        self.content = [_FakeBlock(text)]
+
+
+class _FakeMessages:
+    def __init__(self, text):
+        self._text = text
+    def create(self, **kwargs):
+        return _FakeResponse(self._text)
+
+
+class _FakeClient:
+    def __init__(self, text):
+        self.messages = _FakeMessages(text)
+
+
+def _llm_result(rule_type, answer):
+    original_client = m._client
+    try:
+        m._client = _FakeClient(f"ANSWER: {answer}\nREASON: test reason.")
+        return m.check_llm_rule({"age": 55}, _rule(type=rule_type, check_method="llm"))[0]
+    finally:
+        m._client = original_client
+
+
+def test_llm_exclusion_condition_absent_is_met():
+    # e.g. "invasive breast cancer" -- patient has DCIS only -> passes the rule
+    assert _llm_result("exclusion", "No") == "Met"
+
+
+def test_llm_exclusion_condition_present_is_not_met():
+    assert _llm_result("exclusion", "Yes") == "Not Met"
+
+
+def test_llm_inclusion_condition_true_is_met():
+    assert _llm_result("inclusion", "Yes") == "Met"
+
+
+def test_llm_inclusion_condition_false_is_not_met():
+    assert _llm_result("inclusion", "No") == "Not Met"
+
+
+def test_llm_unknown_stays_unknown_for_both_rule_types():
+    assert _llm_result("inclusion", "Unknown") == "Unknown"
+    assert _llm_result("exclusion", "Unknown") == "Unknown"
+
+
+def test_llm_not_applicable_is_passed_through():
+    assert _llm_result("inclusion", "Not Applicable") == "Not Applicable"
+
+
 if __name__ == "__main__":
     # Plain-assert runner so this file works even without pytest installed --
     # just `python3 test_agent2_matcher.py`.

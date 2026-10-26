@@ -3,7 +3,9 @@
 Run from the repo root:
     python agent1_src/agent1.py data/trials/NCT05950945.json    # one trial
     python agent1_src/agent1.py --all                           # every trial in data/trials/
-Output: data/rules/raw/<trial_id>.json
+    python agent1_src/agent1.py data/trials/NCT04916808.json --drafts   # save for review instead
+Output: data/rules/raw/<trial_id>.json (or data/rules/drafts/ with --drafts, then approve with
+integration/rule_approval.py)
 """
 import json
 import os
@@ -16,6 +18,7 @@ import anthropic
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "data" / "rules" / "raw"
+DRAFT_DIR = ROOT / "data" / "rules" / "drafts"
 MODEL = os.getenv("AGENT1_MODEL", "claude-haiku-4-5-20251001")  # change in .env if this model name stops working
 
 # Edit this list so the names match the keys in your synthetic patient JSON.
@@ -107,7 +110,7 @@ def extract_rules(client, trial):
     return criteria, tool_use_block.input["rules"]
 
 
-def run_trial(client, path):
+def run_trial(client, path, out_dir=OUT_DIR):
     # strict=False because the criteria strings contain raw newlines
     trial = json.loads(Path(path).read_text(encoding="utf-8"), strict=False)
     trial_id = trial["trial_id"]
@@ -126,8 +129,8 @@ def run_trial(client, path):
         if re.sub(r"\s+", " ", r["source_text"]) not in flat:
             print(f"  WARNING {r['rule_id']}: source_text is not an exact copy of the trial text")
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    out = OUT_DIR / f"{trial_id}.json"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = out_dir / f"{trial_id}.json"
     out.write_text(json.dumps({"trial_id": trial_id, "title": trial["official_title"], "model": MODEL,
                                "rules": rules}, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"{trial_id}: saved {len(rules)} rules -> {out}")
@@ -138,12 +141,14 @@ if __name__ == "__main__":
     key = os.getenv("ANTHROPIC_API_KEY")
     if not key:
         sys.exit("ANTHROPIC_API_KEY not found. Put it in a .env file.")
-    if len(sys.argv) < 2:
-        sys.exit("usage: python agent1_src/agent1.py <trial.json> | --all")
-    paths = sorted((ROOT / "data" / "trials").glob("*.json")) if sys.argv[1] == "--all" else [sys.argv[1]]
+    args = [a for a in sys.argv[1:] if a != "--drafts"]
+    out_dir = DRAFT_DIR if "--drafts" in sys.argv[1:] else OUT_DIR
+    if not args:
+        sys.exit("usage: python agent1_src/agent1.py <trial.json> | --all  [--drafts]")
+    paths = sorted((ROOT / "data" / "trials").glob("*.json")) if args[0] == "--all" else [args[0]]
     client = anthropic.Anthropic(api_key=key)
     for p in paths:
         try:
-            run_trial(client, p)
+            run_trial(client, p, out_dir)
         except Exception as err:
             print(f"{Path(p).name}: ERROR {err}")

@@ -39,8 +39,11 @@ Expected Agent 1 format:
 Hybrid approach:
 
 - Simple structured rules are evaluated directly with Python.
-- Complex natural-language rules are evaluated with OpenAI.
-- Rules with applies_if are evaluated with OpenAI.
+- Complex natural-language rules are evaluated with Claude (Anthropic API).
+- Rules with applies_if are evaluated with Claude (Anthropic API).
+- Claude only answers whether the rule condition is true (Yes/No/Unknown);
+  the code converts that into Met/Not Met, so exclusion logic is never
+  left to the model.
 - Missing patient information produces Unknown rather than a guess.
 - API failures are explicitly marked so they are not confused with
   genuine patient-data gaps.
@@ -66,19 +69,19 @@ import time
 import traceback
 
 from dotenv import load_dotenv
-from openai import OpenAI
+import anthropic
 
 
 # ============================================================
-# OpenAI setup
+# Claude (Anthropic API) setup
 # ============================================================
 
 load_dotenv()
 
-API_KEY = os.environ.get("OPENAI_API_KEY")
-MODEL = os.environ.get("OPENAI_MODEL", "gpt-5-mini")
+API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+MODEL = os.environ.get("AGENT2_MODEL", "claude-haiku-4-5-20251001")
 
-_client = OpenAI(api_key=API_KEY) if API_KEY else None
+_client = anthropic.Anthropic(api_key=API_KEY) if API_KEY else None
 
 
 # Retry settings for temporary API failures
@@ -344,7 +347,7 @@ def check_llm_rule(patient, rule):
             "Unknown",
             (
                 "LLM not configured "
-                "(no OPENAI_API_KEY set) "
+                "(no ANTHROPIC_API_KEY set) "
                 "-- needs manual review"
             )
         )
@@ -363,11 +366,7 @@ You are checking one clinical trial eligibility rule against one patient record.
 Rule type:
 {rule.get("type", "inclusion")}
 
-Meaning:
-- inclusion = patient must satisfy the stated requirement
-- exclusion = patient becomes ineligible if the stated disqualifying condition is true
-
-Rule:
+Rule (the condition to check):
 {rule.get("rule_text")}
 
 Original trial wording:
@@ -377,66 +376,42 @@ Original trial wording:
 Patient record:
 {json.dumps(patient, indent=2)}
 
-Decide the final eligibility result for this rule.
+QUESTION:
+Based only on the patient record, is the condition stated in the Rule TRUE for this patient?
 
-The result is always from the PATIENT'S ELIGIBILITY perspective.
+Answer about the CONDITION, not about eligibility.
+For an exclusion rule, the Rule describes the disqualifying condition, so answer whether
+the patient HAS that condition. Do not convert your answer into Met or Not Met; the program
+does that afterwards.
 
-INCLUSION RULE:
+Yes
+= the patient record positively supports that the condition is true.
 
-Met
-= there is sufficient evidence that the patient satisfies the requirement.
-
-Not Met
-= there is sufficient evidence that the patient does not satisfy the requirement.
-
-Unknown
-= there is not enough information in the patient record to determine whether the requirement is satisfied.
-
-
-EXCLUSION RULE:
-
-Met
-= there is sufficient evidence that the patient DOES NOT trigger the exclusion.
-
-Not Met
-= there is sufficient evidence that the patient DOES trigger the exclusion.
+No
+= the patient record positively supports that the condition is false.
 
 Unknown
-= there is not enough information to determine whether the exclusion is present.
+= the patient record does not contain enough information to decide.
 
-
-NOT APPLICABLE:
-
-Use Not Applicable only when an applies_if condition exists and
-there is sufficient evidence that the condition does not apply.
+Not Applicable
+= use only when an applies_if condition exists and the record clearly shows it does not apply.
 
 
 IMPORTANT SAFETY AND LOGIC RULES:
 
 - Use only facts explicitly supported by the patient record.
-- Never invent patient facts.
-- Missing information is NOT evidence that an inclusion rule failed.
-- Missing information is NOT evidence that an exclusion rule is present.
+- Never invent diagnoses, procedures, dates, test results, treatment history, or other clinical information.
+- Missing information is evidence of nothing: if the record neither confirms nor rules out the condition, answer Unknown.
 - Never assume a condition is absent because it is not documented.
 - Never assume a condition is present because supporting information is missing.
-- Distinguish missing information from a confirmed positive finding.
-- Distinguish missing information from a confirmed negative finding.
-- For an exclusion rule, return Not Met ONLY when the patient record positively supports the disqualifying condition.
-- If an exclusion cannot be confirmed or ruled out because relevant information is missing, return Unknown.
-- If an inclusion criterion cannot be confirmed or disproved because information is missing, return Unknown.
 - Do not infer reproductive potential solely from age or menopausal status.
-- Do not invent diagnoses, procedures, dates, test results, treatment history, or other clinical information.
-- Use Not Applicable only when a conditional rule is demonstrably irrelevant to the patient.
 - Distinguish CURRENT disease from PRIOR medical history.
-- A current diagnosis must never be treated as evidence of a prior diagnosis unless the patient record explicitly states previous or historical disease.
+- A current diagnosis is not evidence of a prior diagnosis unless the record explicitly describes previous or historical disease.
 - Words such as "prior", "previous", "history of", "formerly", or "past" require evidence about the patient's past history.
-- If the record only documents the current diagnosis and gives no information about prior disease history, return Unknown for a rule about prior disease.
-- Absence of documentation of an exclusion condition is not enough to return Met.
-- For an exclusion rule, return Met only when the patient record positively supports that the exclusion condition is absent.
-- If neither presence nor absence of the exclusion condition is documented, return Unknown.
+- If the record only documents the current diagnosis and gives no information about prior disease history, answer Unknown for a condition about prior disease.
 
 
-EXAMPLE:
+EXAMPLE 1:
 
 Exclusion rule:
 "Patient tissue is insufficient to generate test results."
@@ -445,39 +420,35 @@ Patient record:
 No tissue adequacy information is documented.
 
 Correct:
-
-RESULT: Unknown
-REASON: The patient record does not contain enough information to determine whether the tissue is sufficient.
+ANSWER: Unknown
+REASON: The record contains no information about tissue sufficiency.
 
 Incorrect:
-
-RESULT: Not Met
+ANSWER: Yes
 REASON: Tissue sufficiency is not documented.
 
 
-Respond with EXACTLY two lines and nothing else:
-
-RESULT: <Met|Not Met|Unknown|Not Applicable>
-REASON: <one short sentence>
-
-CURRENT VS PRIOR HISTORY EXAMPLE:
+EXAMPLE 2:
 
 Exclusion rule:
 "Patient has prior in situ or invasive breast cancer."
 
 Patient record:
-Current diagnosis is ductal carcinoma in situ (DCIS).
-No previous breast cancer history is documented.
+Current diagnosis is ductal carcinoma in situ (DCIS). No previous breast cancer history is documented.
 
 Correct:
-
-RESULT: Unknown
-REASON: The record documents current DCIS but does not establish whether the patient has a prior history of breast cancer.
+ANSWER: Unknown
+REASON: The record documents current DCIS but does not say whether the patient has any prior breast cancer.
 
 Incorrect:
-
-RESULT: Not Met
+ANSWER: Yes
 REASON: The patient currently has DCIS.
+
+
+Respond with EXACTLY two lines and nothing else:
+
+ANSWER: <Yes|No|Unknown|Not Applicable>
+REASON: <one short sentence describing the evidence about the condition>
 """.strip()
 
     last_error = None
@@ -489,137 +460,107 @@ REASON: The patient currently has DCIS.
 
         try:
 
-            response = _client.chat.completions.create(
+            response = _client.messages.create(
                 model=MODEL,
+                max_tokens=400,
+                system=(
+                    "You are a clinical trial eligibility assessment assistant. "
+                    "You decide whether a stated condition is true for a patient, "
+                    "using only the provided patient record. "
+                    "Answer about the condition itself, never about eligibility. "
+                    "Missing information means Unknown. "
+                    "Do not invent missing information. "
+                    "Do not confuse a current diagnosis with prior medical history. "
+                    "Respond in exactly two lines:\n"
+                    "ANSWER: Yes|No|Unknown|Not Applicable\n"
+                    "REASON: A short explanation."
+                ),
                 messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "You are a clinical trial eligibility assessment assistant. "
-                            "Use only the provided patient information. "
-                            "Never treat missing information as evidence that a criterion "
-                            "is satisfied or violated. "
-                            "Do not confuse a current diagnosis with prior medical history. "
-                            "Do not treat absence of documentation as proof that an exclusion is absent. "
-                            "For exclusion criteria, Not Met means the disqualifying "
-                            "condition is positively supported by the patient record. "
-                            "If it cannot be confirmed because information is missing, "
-                            "return Unknown. "
-                            "Do not invent missing information. "
-                            "Respond in exactly two lines:\n"
-                            "RESULT: Met|Not Met|Unknown|Not Applicable\n"
-                            "REASON: A short explanation."
-                        )
-                    },
                     {
                         "role": "user",
                         "content": prompt
                     }
-                ],
-                reasoning_effort="low",
-                max_completion_tokens=2000
+                ]
             )
 
-            choice = response.choices[0]
-
-            text = (
-                choice.message.content
-                or ""
+            text = "".join(
+                block.text
+                for block in response.content
+                if block.type == "text"
             ).strip()
 
             # --------------------------------------------
             # Detect incomplete output
             # --------------------------------------------
 
-            if choice.finish_reason == "length":
+            if response.stop_reason == "max_tokens":
                 raise ValueError(
-                    "OpenAI response reached its "
-                    "completion token limit."
+                    "Claude response reached its "
+                    "max_tokens limit."
                 )
 
             if not text:
                 raise ValueError(
                     (
-                        "OpenAI returned an empty response. "
-                        f"finish_reason={choice.finish_reason}"
+                        "Claude returned an empty response. "
+                        f"stop_reason={response.stop_reason}"
                     )
                 )
 
             # --------------------------------------------
-            # Parse RESULT
+            # Parse ANSWER and REASON
             # --------------------------------------------
 
-            result_line = next(
-                (
-                    line.strip()
-                    for line in text.splitlines()
-                    if (
-                        line.strip()
-                        .upper()
-                        .startswith("RESULT:")
-                    )
-                ),
+            lines = [line.strip() for line in text.splitlines()]
+
+            answer_line = next(
+                (line for line in lines if line.upper().startswith("ANSWER:")),
                 None
             )
-
-            # --------------------------------------------
-            # Parse REASON
-            # --------------------------------------------
 
             reason_line = next(
-                (
-                    line.strip()
-                    for line in text.splitlines()
-                    if (
-                        line.strip()
-                        .upper()
-                        .startswith("REASON:")
-                    )
-                ),
+                (line for line in lines if line.upper().startswith("REASON:")),
                 None
             )
 
-            if (
-                result_line is None
-                or reason_line is None
-            ):
+            if answer_line is None or reason_line is None:
                 raise ValueError(
-                    (
-                        "Unexpected OpenAI response "
-                        f"format: {text[:300]!r}"
-                    )
+                    "Unexpected Claude response "
+                    f"format: {text[:300]!r}"
                 )
 
-            result = (
-                result_line
-                .split(":", 1)[1]
+            answer = (
+                answer_line.split(":", 1)[1]
                 .strip()
+                .strip(".")
+                .lower()
             )
 
-            reason = (
-                reason_line
-                .split(":", 1)[1]
-                .strip()
-            )
-
-            valid_results = {
-                "Met",
-                "Not Met",
-                "Unknown",
-                "Not Applicable"
-            }
-
-            if result not in valid_results:
-                raise ValueError(
-                    f"Invalid result: {result!r}"
-                )
+            reason = reason_line.split(":", 1)[1].strip()
 
             if not reason:
-                raise ValueError(
-                    "Missing eligibility explanation"
+                raise ValueError("Missing eligibility explanation")
+
+            # --------------------------------------------
+            # Convert the condition answer into an
+            # eligibility result, exactly like the
+            # Python checks do (see _apply_polarity).
+            # --------------------------------------------
+
+            if answer in ("yes", "no"):
+                return _apply_polarity(
+                    rule.get("type", "inclusion"),
+                    answer == "yes",
+                    reason
                 )
 
-            return result, reason
+            if answer == "unknown":
+                return "Unknown", reason
+
+            if answer in ("not applicable", "n/a"):
+                return "Not Applicable", reason
+
+            raise ValueError(f"Invalid answer: {answer!r}")
 
         except Exception as error:
 

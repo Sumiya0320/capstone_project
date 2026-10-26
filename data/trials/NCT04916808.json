@@ -1,0 +1,27 @@
+{
+  "trial_id": "NCT04916808",
+  "official_title": "A Prospective Registry Studyto Evaluate the Effect of the DCISionRT Test on Treatment Decisions in Patients With DCIS Following Breast Conserving Therapy",
+  "status": "ACTIVE_NOT_RECRUITING",
+  "url": "https://clinicaltrials.gov/study/NCT04916808",
+  "eligibility": {
+    "minimum_age": "26 Years",
+    "maximum_age": "N/A",
+    "sex": "FEMALE",
+    "Accepts Healthy Volunteers": "No",
+    "inclusion_criteria": [
+      "A clinical decision has been made to order the DCISionRT™ Test as part of routine patient care",
+      "Patient must have histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (presence of lobular carcinoma in situ (LCIS) or other benign breast disease in addition to DCIS is acceptable)",
+      "Patient must be consented within 120 days after surgery",
+      "Patient must be eligible for, or have already received breast conserving surgery",
+      "Patient must be eligible to receive radiation and/or systemic treatment",
+      "Patient must be female and greater than 25 years old",
+      "Patient must be able to provide informed consent"
+    ],
+    "exclusion_criteria": [
+      "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+      "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+      "Patient has already been surgically treated with a mastectomy for primary DCIS",
+      "Patient has prior in situ or invasive breast cancer"
+    ]
+  }
+}

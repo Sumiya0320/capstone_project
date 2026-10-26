@@ -1,7 +1,7 @@
 """Run live DCIS validation: python validate_dcis_pipeline.py.
 
 Uses the connector's saved Agent 1 rules and real Agent 2 LLM calls;
-requires OPENAI_API_KEY and network access. No rules or results are mocked.
+requires ANTHROPIC_API_KEY and network access. No rules or results are mocked.
 The cases differ by the age cutoff or undocumented consent capacity.
 """
 

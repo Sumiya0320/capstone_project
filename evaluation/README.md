@@ -71,7 +71,7 @@ Evaluate saved full pipeline predictions:
 ./.venv/Scripts/python.exe -B evaluation/run_evaluation.py --predictions evaluation/results/pipeline_predictions.json
 ```
 
-For **paid OpenAI API calls**, with the configured key and network access:
+For **paid Claude (Anthropic API) calls**, with the configured key and network access:
 
 ```powershell
 # Three DCIS patients, approximately 42 LLM rule checks, plus possible retries:
