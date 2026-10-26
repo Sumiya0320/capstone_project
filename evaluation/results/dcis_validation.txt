@@ -1,0 +1,6 @@
+Trial: NCT04916808
+Patient | Expected | Actual | Check
+SYN-DCIS-ELIGIBLE | Likely Eligible | Likely Eligible | PASS
+SYN-DCIS-EXCLUDED | Excluded | Excluded | PASS
+SYN-DCIS-REVIEW | Needs Review | Needs Review | PASS
+3/3 cases passed

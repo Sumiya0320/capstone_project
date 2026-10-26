@@ -1,0 +1,2 @@
+trial_id,rules_sha256,source_file,source_sha256,reference_complete,review_status,reviewed_by,independent,reference_evidence
+NCT04916808,7baa24f4aecb506b85187a3b2c877ef037ac6e32d8f8e355c07244f5d1e5412d,evaluation\dcis\source\NCT04916808.registry.json,54814669f748e70dae961b2d31edcd2aae41c8ab19c01cb13a1c24fc44debb2c,no,unreviewed,,,

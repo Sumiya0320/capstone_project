@@ -1,0 +1,1345 @@
+{
+  "created_at": "2026-10-15T09:44:39.659066+00:00",
+  "model": "gpt-5-mini",
+  "system_sha256": {
+    "agent2_src\\agent2_matcher.py": "d6aea5e09ec8de4e5690fa0bca43fe07da737ae26e5b89c123ca7311ecf3dcc2",
+    "integration\\agent_connector.py": "06926165e01967940939d9cb0bf3c5552cd1b96882e2aeb42767d43559c658d0"
+  },
+  "records": [
+    {
+      "patient_id": "SYN-DCIS-ELIGIBLE",
+      "patient_sha256": "d8f8e3bb5c9b993574ff01d78f3f82f4e9d00c9d859b52a44601ca12eb59b17c",
+      "trial_id": "NCT04916808",
+      "agent1": {
+        "trial_id": "NCT04916808",
+        "title": "The AUS-PREDICT Registry for DCIS Patients With DCISionRT Testing",
+        "model": "gpt-5-mini",
+        "rules": [
+          {
+            "type": "inclusion",
+            "rule_text": "A clinical decision has been made to order the DCISionRT Test as part of routine patient care",
+            "source_text": "A clinical decision has been made to order the DCISionRT\u2122 Test as part of routine patient care",
+            "check_method": "llm",
+            "field": "dcisionrt_test_ordered",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_01"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (LCIS or other benign disease allowed)",
+            "source_text": "Patient must have histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (presence of lobular carcinoma in situ (LCIS) or other benign breast disease in addition to DCIS is acceptable)",
+            "check_method": "llm",
+            "field": "histologic_dcis_confirmed",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_02"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient must be consented within 120 days after surgery",
+            "source_text": "Patient must be consented within 120 days after surgery",
+            "check_method": "python",
+            "field": "days_since_surgery_at_consent",
+            "operator": "<=",
+            "value": 120,
+            "applies_if": "applies if surgery has been performed (criterion references 'after surgery')",
+            "logic_group": null,
+            "notes": "Criterion wording implies application relative to surgery date; ambiguous if patient has not yet had surgery.",
+            "rule_id": "NCT04916808_03"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Eligible for, or have already received, breast conserving surgery",
+            "source_text": "Patient must be eligible for, or have already received breast conserving surgery",
+            "check_method": "llm",
+            "field": "breast_conserving_surgery_eligible_or_received",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_04"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Eligible to receive radiation and/or systemic treatment",
+            "source_text": "Patient must be eligible to receive radiation and/or systemic treatment",
+            "check_method": "llm",
+            "field": "eligible_for_radiation_or_systemic_treatment",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_05"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient is female",
+            "source_text": "Patient must be female and greater than 25 years old",
+            "check_method": "python",
+            "field": "sex",
+            "operator": "==",
+            "value": "FEMALE",
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_06"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient age is greater than 25 years",
+            "source_text": "Patient must be female and greater than 25 years old",
+            "check_method": "python",
+            "field": "age",
+            "operator": ">",
+            "value": 25,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": "Trial header lists Minimum Age: 26 Years; inclusion text states 'greater than 25 years'. These are equivalent but wording retained from inclusion text.",
+            "rule_id": "NCT04916808_07"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient must be able to provide informed consent",
+            "source_text": "Patient must be able to provide informed consent",
+            "check_method": "llm",
+            "field": "able_to_provide_informed_consent",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_08"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient tissue is insufficient to generate DCISionRT test results",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": "tissue_sufficient_for_dcisionrt",
+            "operator": "==",
+            "value": false,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": "Part of a combined exclusion that also lists missing required inputs; preserved original phrasing.",
+            "rule_id": "NCT04916808_09"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'age' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": "Input absence treated as exclusion per text listing; input names preserved exactly.",
+            "rule_id": "NCT04916808_10"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'tumor size' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_11"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'margin status' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_12"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'palpability' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_13"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has invasive breast cancer",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "invasive_breast_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_14"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Evidence of invasive breast cancer in the ipsilateral or contralateral breast",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "evidence_in_ipsilateral_or_contralateral_breast_of_invasive_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": "This captures the phrase 'evidence in the ipsilateral or contralateral breast' from the same sentence; related to invasive disease.",
+            "rule_id": "NCT04916808_15"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Microinvasion present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "microinvasion_present",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_16"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Lymph node involvement present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "lymph_node_involvement",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_17"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Paget's disease of the nipple present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "pagets_disease_of_nipple",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_18"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "source_text": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "check_method": "llm",
+            "field": "mastectomy_for_primary_DCIS",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_19"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has prior in situ or invasive breast cancer",
+            "source_text": "Patient has prior in situ or invasive breast cancer",
+            "check_method": "llm",
+            "field": "prior_in_situ_or_invasive_breast_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_20"
+          }
+        ],
+        "status": "success"
+      },
+      "agent2": {
+        "status": "success",
+        "results": [
+          {
+            "rule_id": "NCT04916808_01",
+            "type": "inclusion",
+            "description": "A clinical decision has been made to order the DCISionRT Test as part of routine patient care",
+            "result": "Met",
+            "reason": "The patient record explicitly indicates dcisionrt_test_ordered is true, showing a clinical decision to order the DCISionRT test.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_02",
+            "type": "inclusion",
+            "description": "Histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (LCIS or other benign disease allowed)",
+            "result": "Met",
+            "reason": "Record documents histologically confirmed DCIS and specifies DCIS is in a single breast.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_03",
+            "type": "inclusion",
+            "description": "Patient must be consented within 120 days after surgery",
+            "result": "Met",
+            "reason": "Surgery was performed and the record shows consent occurred 30 days after surgery, which is within 120 days.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_04",
+            "type": "inclusion",
+            "description": "Eligible for, or have already received, breast conserving surgery",
+            "result": "Met",
+            "reason": "Record documents that the patient has already received breast conserving surgery and the field \"breast_conserving_surgery_eligible_or_received\" is true.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_05",
+            "type": "inclusion",
+            "description": "Eligible to receive radiation and/or systemic treatment",
+            "result": "Met",
+            "reason": "The patient record explicitly states \"eligible_for_radiation_or_systemic_treatment\": true.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_06",
+            "type": "inclusion",
+            "description": "Patient is female",
+            "result": "Met",
+            "reason": "sex = 'Female', condition '== 'FEMALE'' is True",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_07",
+            "type": "inclusion",
+            "description": "Patient age is greater than 25 years",
+            "result": "Met",
+            "reason": "age = 55, condition '> 25' is True",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_08",
+            "type": "inclusion",
+            "description": "Patient must be able to provide informed consent",
+            "result": "Met",
+            "reason": "The record explicitly states \"able_to_provide_informed_consent\": true.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_09",
+            "type": "exclusion",
+            "description": "Patient tissue is insufficient to generate DCISionRT test results",
+            "result": "Met",
+            "reason": "Record documents tissue_sufficient_for_dcisionrt = true and required inputs (age, tumor_size, margin_status, palpability) are present.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_10",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'age' is missing",
+            "result": "Met",
+            "reason": "Age is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_11",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'tumor size' is missing",
+            "result": "Met",
+            "reason": "Tumor Size is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_12",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'margin status' is missing",
+            "result": "Met",
+            "reason": "Margin Status is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_13",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'palpability' is missing",
+            "result": "Met",
+            "reason": "Palpability is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_14",
+            "type": "exclusion",
+            "description": "Patient has invasive breast cancer",
+            "result": "Met",
+            "reason": "Patient record explicitly documents no invasive breast cancer and no ipsilateral/contralateral invasive disease, microinvasion, nodal involvement, or Paget's disease.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_15",
+            "type": "exclusion",
+            "description": "Evidence of invasive breast cancer in the ipsilateral or contralateral breast",
+            "result": "Met",
+            "reason": "The record explicitly documents no invasive breast cancer or evidence in ipsilateral/contralateral breast (invasive_breast_cancer=false and related fields negative).",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_16",
+            "type": "exclusion",
+            "description": "Microinvasion present",
+            "result": "Met",
+            "reason": "The record explicitly documents microinvasion_present: false, indicating no microinvasion.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_17",
+            "type": "exclusion",
+            "description": "Lymph node involvement present",
+            "result": "Met",
+            "reason": "The record explicitly states lymph_node_involvement is false, supporting absence of lymph node involvement.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_18",
+            "type": "exclusion",
+            "description": "Paget's disease of the nipple present",
+            "result": "Met",
+            "reason": "The record explicitly states pagets_disease_of_nipple is false, indicating absence of Paget's disease.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_19",
+            "type": "exclusion",
+            "description": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "result": "Met",
+            "reason": "The record explicitly indicates mastectomy_for_primary_DCIS: false and documents breast conserving surgery rather than mastectomy.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_20",
+            "type": "exclusion",
+            "description": "Patient has prior in situ or invasive breast cancer",
+            "result": "Met",
+            "reason": "The record explicitly states prior_in_situ_or_invasive_breast_cancer: false, indicating no prior breast cancer.",
+            "logic_group": null
+          }
+        ],
+        "summary": {
+          "met": 12,
+          "not_met": 0,
+          "unknown": 0,
+          "not_applicable": 0,
+          "overall": "Likely Eligible"
+        }
+      }
+    },
+    {
+      "patient_id": "SYN-DCIS-EXCLUDED",
+      "patient_sha256": "6817b96a62c7169877778cfb38a4db5516b0cdc6fd2d335f56e8d4fb72e8aaac",
+      "trial_id": "NCT04916808",
+      "agent1": {
+        "trial_id": "NCT04916808",
+        "title": "The AUS-PREDICT Registry for DCIS Patients With DCISionRT Testing",
+        "model": "gpt-5-mini",
+        "rules": [
+          {
+            "type": "inclusion",
+            "rule_text": "A clinical decision has been made to order the DCISionRT Test as part of routine patient care",
+            "source_text": "A clinical decision has been made to order the DCISionRT\u2122 Test as part of routine patient care",
+            "check_method": "llm",
+            "field": "dcisionrt_test_ordered",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_01"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (LCIS or other benign disease allowed)",
+            "source_text": "Patient must have histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (presence of lobular carcinoma in situ (LCIS) or other benign breast disease in addition to DCIS is acceptable)",
+            "check_method": "llm",
+            "field": "histologic_dcis_confirmed",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_02"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient must be consented within 120 days after surgery",
+            "source_text": "Patient must be consented within 120 days after surgery",
+            "check_method": "python",
+            "field": "days_since_surgery_at_consent",
+            "operator": "<=",
+            "value": 120,
+            "applies_if": "applies if surgery has been performed (criterion references 'after surgery')",
+            "logic_group": null,
+            "notes": "Criterion wording implies application relative to surgery date; ambiguous if patient has not yet had surgery.",
+            "rule_id": "NCT04916808_03"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Eligible for, or have already received, breast conserving surgery",
+            "source_text": "Patient must be eligible for, or have already received breast conserving surgery",
+            "check_method": "llm",
+            "field": "breast_conserving_surgery_eligible_or_received",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_04"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Eligible to receive radiation and/or systemic treatment",
+            "source_text": "Patient must be eligible to receive radiation and/or systemic treatment",
+            "check_method": "llm",
+            "field": "eligible_for_radiation_or_systemic_treatment",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_05"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient is female",
+            "source_text": "Patient must be female and greater than 25 years old",
+            "check_method": "python",
+            "field": "sex",
+            "operator": "==",
+            "value": "FEMALE",
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_06"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient age is greater than 25 years",
+            "source_text": "Patient must be female and greater than 25 years old",
+            "check_method": "python",
+            "field": "age",
+            "operator": ">",
+            "value": 25,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": "Trial header lists Minimum Age: 26 Years; inclusion text states 'greater than 25 years'. These are equivalent but wording retained from inclusion text.",
+            "rule_id": "NCT04916808_07"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient must be able to provide informed consent",
+            "source_text": "Patient must be able to provide informed consent",
+            "check_method": "llm",
+            "field": "able_to_provide_informed_consent",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_08"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient tissue is insufficient to generate DCISionRT test results",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": "tissue_sufficient_for_dcisionrt",
+            "operator": "==",
+            "value": false,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": "Part of a combined exclusion that also lists missing required inputs; preserved original phrasing.",
+            "rule_id": "NCT04916808_09"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'age' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": "Input absence treated as exclusion per text listing; input names preserved exactly.",
+            "rule_id": "NCT04916808_10"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'tumor size' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_11"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'margin status' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_12"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'palpability' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_13"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has invasive breast cancer",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "invasive_breast_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_14"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Evidence of invasive breast cancer in the ipsilateral or contralateral breast",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "evidence_in_ipsilateral_or_contralateral_breast_of_invasive_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": "This captures the phrase 'evidence in the ipsilateral or contralateral breast' from the same sentence; related to invasive disease.",
+            "rule_id": "NCT04916808_15"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Microinvasion present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "microinvasion_present",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_16"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Lymph node involvement present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "lymph_node_involvement",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_17"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Paget's disease of the nipple present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "pagets_disease_of_nipple",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_18"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "source_text": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "check_method": "llm",
+            "field": "mastectomy_for_primary_DCIS",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_19"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has prior in situ or invasive breast cancer",
+            "source_text": "Patient has prior in situ or invasive breast cancer",
+            "check_method": "llm",
+            "field": "prior_in_situ_or_invasive_breast_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_20"
+          }
+        ],
+        "status": "success"
+      },
+      "agent2": {
+        "status": "success",
+        "results": [
+          {
+            "rule_id": "NCT04916808_01",
+            "type": "inclusion",
+            "description": "A clinical decision has been made to order the DCISionRT Test as part of routine patient care",
+            "result": "Met",
+            "reason": "The patient record explicitly documents dcisionrt_test_ordered: true, indicating a clinical decision to order the DCISionRT test.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_02",
+            "type": "inclusion",
+            "description": "Histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (LCIS or other benign disease allowed)",
+            "result": "Met",
+            "reason": "Record documents histologically confirmed DCIS and specifies DCIS is in a single breast.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_03",
+            "type": "inclusion",
+            "description": "Patient must be consented within 120 days after surgery",
+            "result": "Met",
+            "reason": "Surgery was performed and documented days_since_surgery_at_consent is 30, which is within 120 days.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_04",
+            "type": "inclusion",
+            "description": "Eligible for, or have already received, breast conserving surgery",
+            "result": "Met",
+            "reason": "Patient record documents prior breast conserving surgery and a field confirming eligibility/receipt of breast conserving surgery.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_05",
+            "type": "inclusion",
+            "description": "Eligible to receive radiation and/or systemic treatment",
+            "result": "Met",
+            "reason": "The record explicitly states \"eligible_for_radiation_or_systemic_treatment\": true.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_06",
+            "type": "inclusion",
+            "description": "Patient is female",
+            "result": "Met",
+            "reason": "sex = 'Female', condition '== 'FEMALE'' is True",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_07",
+            "type": "inclusion",
+            "description": "Patient age is greater than 25 years",
+            "result": "Not Met",
+            "reason": "age = 25, condition '> 25' is False",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_08",
+            "type": "inclusion",
+            "description": "Patient must be able to provide informed consent",
+            "result": "Met",
+            "reason": "The record explicitly states able_to_provide_informed_consent = true.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_09",
+            "type": "exclusion",
+            "description": "Patient tissue is insufficient to generate DCISionRT test results",
+            "result": "Met",
+            "reason": "Record documents tissue sufficient for DCISionRT and all required inputs (age, tumor size, margin status, palpability) are present.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_10",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'age' is missing",
+            "result": "Met",
+            "reason": "Age is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_11",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'tumor size' is missing",
+            "result": "Met",
+            "reason": "Tumor Size is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_12",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'margin status' is missing",
+            "result": "Met",
+            "reason": "Margin Status is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_13",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'palpability' is missing",
+            "result": "Met",
+            "reason": "Palpability is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_14",
+            "type": "exclusion",
+            "description": "Patient has invasive breast cancer",
+            "result": "Met",
+            "reason": "Record explicitly documents no invasive breast cancer, no ipsilateral/contralateral invasive disease, no microinvasion, no lymph node involvement, and no Paget's disease.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_15",
+            "type": "exclusion",
+            "description": "Evidence of invasive breast cancer in the ipsilateral or contralateral breast",
+            "result": "Met",
+            "reason": "Patient record explicitly documents no invasive breast cancer and no evidence in ipsilateral or contralateral breast (microinvasion, nodal involvement, or Paget's)",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_16",
+            "type": "exclusion",
+            "description": "Microinvasion present",
+            "result": "Met",
+            "reason": "The record explicitly documents microinvasion_present: false, confirming absence of microinvasion.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_17",
+            "type": "exclusion",
+            "description": "Lymph node involvement present",
+            "result": "Met",
+            "reason": "The record explicitly documents lymph_node_involvement: false, indicating absence of lymph node involvement.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_18",
+            "type": "exclusion",
+            "description": "Paget's disease of the nipple present",
+            "result": "Met",
+            "reason": "The record explicitly documents pagets_disease_of_nipple as false, confirming Paget's disease is absent.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_19",
+            "type": "exclusion",
+            "description": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "result": "Met",
+            "reason": "The record explicitly indicates mastectomy_for_primary_DCIS: false, confirming the patient has not had a mastectomy for primary DCIS.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_20",
+            "type": "exclusion",
+            "description": "Patient has prior in situ or invasive breast cancer",
+            "result": "Met",
+            "reason": "The record explicitly indicates prior_in_situ_or_invasive_breast_cancer: false, so there is documentation that no prior in situ or invasive breast cancer is present.",
+            "logic_group": null
+          }
+        ],
+        "summary": {
+          "met": 11,
+          "not_met": 1,
+          "unknown": 0,
+          "not_applicable": 0,
+          "overall": "Excluded"
+        }
+      }
+    },
+    {
+      "patient_id": "SYN-DCIS-REVIEW",
+      "patient_sha256": "c1fec9e12edfa3263dec05933dbc35be59b0c610d4938088b5b53dcf392bba8d",
+      "trial_id": "NCT04916808",
+      "agent1": {
+        "trial_id": "NCT04916808",
+        "title": "The AUS-PREDICT Registry for DCIS Patients With DCISionRT Testing",
+        "model": "gpt-5-mini",
+        "rules": [
+          {
+            "type": "inclusion",
+            "rule_text": "A clinical decision has been made to order the DCISionRT Test as part of routine patient care",
+            "source_text": "A clinical decision has been made to order the DCISionRT\u2122 Test as part of routine patient care",
+            "check_method": "llm",
+            "field": "dcisionrt_test_ordered",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_01"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (LCIS or other benign disease allowed)",
+            "source_text": "Patient must have histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (presence of lobular carcinoma in situ (LCIS) or other benign breast disease in addition to DCIS is acceptable)",
+            "check_method": "llm",
+            "field": "histologic_dcis_confirmed",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_02"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient must be consented within 120 days after surgery",
+            "source_text": "Patient must be consented within 120 days after surgery",
+            "check_method": "python",
+            "field": "days_since_surgery_at_consent",
+            "operator": "<=",
+            "value": 120,
+            "applies_if": "applies if surgery has been performed (criterion references 'after surgery')",
+            "logic_group": null,
+            "notes": "Criterion wording implies application relative to surgery date; ambiguous if patient has not yet had surgery.",
+            "rule_id": "NCT04916808_03"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Eligible for, or have already received, breast conserving surgery",
+            "source_text": "Patient must be eligible for, or have already received breast conserving surgery",
+            "check_method": "llm",
+            "field": "breast_conserving_surgery_eligible_or_received",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_04"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Eligible to receive radiation and/or systemic treatment",
+            "source_text": "Patient must be eligible to receive radiation and/or systemic treatment",
+            "check_method": "llm",
+            "field": "eligible_for_radiation_or_systemic_treatment",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_05"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient is female",
+            "source_text": "Patient must be female and greater than 25 years old",
+            "check_method": "python",
+            "field": "sex",
+            "operator": "==",
+            "value": "FEMALE",
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_06"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient age is greater than 25 years",
+            "source_text": "Patient must be female and greater than 25 years old",
+            "check_method": "python",
+            "field": "age",
+            "operator": ">",
+            "value": 25,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": "Trial header lists Minimum Age: 26 Years; inclusion text states 'greater than 25 years'. These are equivalent but wording retained from inclusion text.",
+            "rule_id": "NCT04916808_07"
+          },
+          {
+            "type": "inclusion",
+            "rule_text": "Patient must be able to provide informed consent",
+            "source_text": "Patient must be able to provide informed consent",
+            "check_method": "llm",
+            "field": "able_to_provide_informed_consent",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_08"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient tissue is insufficient to generate DCISionRT test results",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": "tissue_sufficient_for_dcisionrt",
+            "operator": "==",
+            "value": false,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": "Part of a combined exclusion that also lists missing required inputs; preserved original phrasing.",
+            "rule_id": "NCT04916808_09"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'age' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": "Input absence treated as exclusion per text listing; input names preserved exactly.",
+            "rule_id": "NCT04916808_10"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'tumor size' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_11"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'margin status' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_12"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Required DCISionRT input 'palpability' is missing",
+            "source_text": "Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing",
+            "check_method": "llm",
+            "field": null,
+            "operator": null,
+            "value": null,
+            "applies_if": null,
+            "logic_group": "EX1",
+            "notes": null,
+            "rule_id": "NCT04916808_13"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has invasive breast cancer",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "invasive_breast_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_14"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Evidence of invasive breast cancer in the ipsilateral or contralateral breast",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "evidence_in_ipsilateral_or_contralateral_breast_of_invasive_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": "This captures the phrase 'evidence in the ipsilateral or contralateral breast' from the same sentence; related to invasive disease.",
+            "rule_id": "NCT04916808_15"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Microinvasion present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "microinvasion_present",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_16"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Lymph node involvement present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "lymph_node_involvement",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_17"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Paget's disease of the nipple present",
+            "source_text": "Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple",
+            "check_method": "llm",
+            "field": "pagets_disease_of_nipple",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": "EX2",
+            "notes": null,
+            "rule_id": "NCT04916808_18"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "source_text": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "check_method": "llm",
+            "field": "mastectomy_for_primary_DCIS",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_19"
+          },
+          {
+            "type": "exclusion",
+            "rule_text": "Patient has prior in situ or invasive breast cancer",
+            "source_text": "Patient has prior in situ or invasive breast cancer",
+            "check_method": "llm",
+            "field": "prior_in_situ_or_invasive_breast_cancer",
+            "operator": "==",
+            "value": true,
+            "applies_if": null,
+            "logic_group": null,
+            "notes": null,
+            "rule_id": "NCT04916808_20"
+          }
+        ],
+        "status": "success"
+      },
+      "agent2": {
+        "status": "success",
+        "results": [
+          {
+            "rule_id": "NCT04916808_01",
+            "type": "inclusion",
+            "description": "A clinical decision has been made to order the DCISionRT Test as part of routine patient care",
+            "result": "Met",
+            "reason": "The patient record explicitly shows dcisionrt_test_ordered: true, indicating a clinical decision to order the DCISionRT test.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_02",
+            "type": "inclusion",
+            "description": "Histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (LCIS or other benign disease allowed)",
+            "result": "Met",
+            "reason": "Record documents histologically confirmed DCIS and indicates DCIS is present in a single breast.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_03",
+            "type": "inclusion",
+            "description": "Patient must be consented within 120 days after surgery",
+            "result": "Met",
+            "reason": "Surgery was performed and the record shows consent occurred 30 days after surgery, which is within 120 days.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_04",
+            "type": "inclusion",
+            "description": "Eligible for, or have already received, breast conserving surgery",
+            "result": "Met",
+            "reason": "Record documents that the patient has already received breast conserving surgery and field \"breast_conserving_surgery_eligible_or_received\" is true.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_05",
+            "type": "inclusion",
+            "description": "Eligible to receive radiation and/or systemic treatment",
+            "result": "Met",
+            "reason": "The record explicitly states eligible_for_radiation_or_systemic_treatment: true and clinical data (ECOG 0, labs, LVEF 64%) support treatment eligibility.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_06",
+            "type": "inclusion",
+            "description": "Patient is female",
+            "result": "Met",
+            "reason": "sex = 'Female', condition '== 'FEMALE'' is True",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_07",
+            "type": "inclusion",
+            "description": "Patient age is greater than 25 years",
+            "result": "Met",
+            "reason": "age = 55, condition '> 25' is True",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_08",
+            "type": "inclusion",
+            "description": "Patient must be able to provide informed consent",
+            "result": "Unknown",
+            "reason": "The record does not document whether the patient is able to provide informed consent (able_to_provide_informed_consent is null).",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_09",
+            "type": "exclusion",
+            "description": "Patient tissue is insufficient to generate DCISionRT test results",
+            "result": "Met",
+            "reason": "Record documents tissue_sufficient_for_dcisionrt = true and required inputs age, tumor_size, margin_status, and palpability are all present.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_10",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'age' is missing",
+            "result": "Met",
+            "reason": "Age is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_11",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'tumor size' is missing",
+            "result": "Met",
+            "reason": "Tumor Size is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_12",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'margin status' is missing",
+            "result": "Met",
+            "reason": "Margin Status is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_13",
+            "type": "exclusion",
+            "description": "Required DCISionRT input 'palpability' is missing",
+            "result": "Met",
+            "reason": "Palpability is documented in the patient record, so the required DCISionRT input is not missing.",
+            "logic_group": "EX1"
+          },
+          {
+            "rule_id": "NCT04916808_14",
+            "type": "exclusion",
+            "description": "Patient has invasive breast cancer",
+            "result": "Met",
+            "reason": "The record explicitly documents no invasive breast cancer and no evidence in ipsilateral/contralateral breast (microinvasion, node involvement, or Paget's) so the exclusion is not present.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_15",
+            "type": "exclusion",
+            "description": "Evidence of invasive breast cancer in the ipsilateral or contralateral breast",
+            "result": "Met",
+            "reason": "The record explicitly states no invasive breast cancer and no evidence in ipsilateral or contralateral breast (microinvasion, nodal involvement, and Paget's disease all documented as absent).",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_16",
+            "type": "exclusion",
+            "description": "Microinvasion present",
+            "result": "Met",
+            "reason": "The record explicitly states \"microinvasion_present\": false, indicating absence of microinvasion.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_17",
+            "type": "exclusion",
+            "description": "Lymph node involvement present",
+            "result": "Met",
+            "reason": "The record explicitly documents lymph_node_involvement as false, confirming absence of lymph node involvement.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_18",
+            "type": "exclusion",
+            "description": "Paget's disease of the nipple present",
+            "result": "Met",
+            "reason": "The patient record explicitly indicates pagets_disease_of_nipple: false, confirming absence of Paget's disease.",
+            "logic_group": "EX2"
+          },
+          {
+            "rule_id": "NCT04916808_19",
+            "type": "exclusion",
+            "description": "Patient has already been surgically treated with a mastectomy for primary DCIS",
+            "result": "Met",
+            "reason": "The record explicitly indicates mastectomy_for_primary_DCIS: false and shows breast-conserving surgery was performed, so the exclusion is not triggered.",
+            "logic_group": null
+          },
+          {
+            "rule_id": "NCT04916808_20",
+            "type": "exclusion",
+            "description": "Patient has prior in situ or invasive breast cancer",
+            "result": "Met",
+            "reason": "The record explicitly documents prior_in_situ_or_invasive_breast_cancer: false, so the exclusion is not triggered.",
+            "logic_group": null
+          }
+        ],
+        "summary": {
+          "met": 11,
+          "not_met": 0,
+          "unknown": 1,
+          "not_applicable": 0,
+          "overall": "Needs Review"
+        }
+      }
+    }
+  ]
+}

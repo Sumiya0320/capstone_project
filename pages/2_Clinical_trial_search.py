@@ -464,8 +464,17 @@ else:
                             )
 
                     st.session_state[
-                        "processed_trials"
+                        "candidate_trials"
                     ] = processed_trials
+                    st.session_state["screened_trials"] = [
+                        trial
+                        for trial in processed_trials
+                        if trial["basic_match"]
+                    ]
+                    st.success(
+                        f"{len(processed_trials)} trials found. "
+                        f"{len(st.session_state['screened_trials'])} passed basic screening."
+                    )
 
                 except requests.RequestException as error:
 
@@ -478,10 +487,10 @@ else:
 # Display trials
 # =========================================================
 
-if "processed_trials" in st.session_state:
+if "candidate_trials" in st.session_state:
 
     trials = st.session_state[
-        "processed_trials"
+        "candidate_trials"
     ]
 
     st.divider()

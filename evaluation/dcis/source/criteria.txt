@@ -1,0 +1,16 @@
+Inclusion Criteria:
+
+1. A clinical decision has been made to order the DCISionRT™ Test as part of routine patient care
+2. Patient must have histologically confirmed ductal carcinoma in situ (DCIS) in a single breast (presence of lobular carcinoma in situ (LCIS) or other benign breast disease in addition to DCIS is acceptable)
+3. Patient must be consented within 120 days after surgery
+4. Patient must be eligible for, or have already received breast conserving surgery
+5. Patient must be eligible to receive radiation and/or systemic treatment
+6. Patient must be female and greater than 25 years old
+7. Patient must be able to provide informed consent
+
+Exclusion Criteria:
+
+1. Patient tissue is insufficient to generate DCISionRT test results or required DCISionRT inputs (age, tumor size, margin status, palpability) are missing
+2. Patient has invasive breast cancer or evidence in the ipsilateral or contralateral breast of invasive breast cancer, including microinvasion, lymph node involvement, or Paget's disease of the nipple
+3. Patient has already been surgically treated with a mastectomy for primary DCIS
+4. Patient has prior in situ or invasive breast cancer

@@ -1,0 +1,28 @@
+test_changed_patient_snapshot_blocks_review (test_dcis_review.DcisReviewTests.test_changed_patient_snapshot_blocks_review) ... ok
+test_collection_never_overwrites_frozen_predictions (test_dcis_review.DcisReviewTests.test_collection_never_overwrites_frozen_predictions) ... ok
+test_expected_labels_start_blank_and_no_network (test_dcis_review.DcisReviewTests.test_expected_labels_start_blank_and_no_network) ... ok
+test_explanation_ratings_need_two_people_and_matching_artifact (test_dcis_review.DcisReviewTests.test_explanation_ratings_need_two_people_and_matching_artifact) ... ok
+test_fixed_sample_has_twelve_unique_cases (test_dcis_review.DcisReviewTests.test_fixed_sample_has_twelve_unique_cases) ... ok
+test_no_predictions_cannot_be_evaluated (test_dcis_review.DcisReviewTests.test_no_predictions_cannot_be_evaluated) ... ok
+test_prepare_preserves_human_edits (test_dcis_review.DcisReviewTests.test_prepare_preserves_human_edits) ... ok
+test_saved_model_unknowns_do_not_approve_human_labels (test_dcis_review.DcisReviewTests.test_saved_model_unknowns_do_not_approve_human_labels) ... ok
+test_classification_and_confusion (test_metrics.MetricsTests.test_classification_and_confusion) ... ok
+test_extraction_duplicates_are_false_positives (test_metrics.MetricsTests.test_extraction_duplicates_are_false_positives) ... ok
+test_failure_reasons (test_metrics.MetricsTests.test_failure_reasons) ... ok
+test_invalid_reference_fails (test_metrics.MetricsTests.test_invalid_reference_fails) ... ok
+test_no_data_is_not_zero_accuracy (test_metrics.MetricsTests.test_no_data_is_not_zero_accuracy) ... ok
+test_placeholder_approval_rejected (test_metrics.MetricsTests.test_placeholder_approval_rejected) ... ok
+test_technical_unknown_is_not_correct (test_metrics.MetricsTests.test_technical_unknown_is_not_correct) ... ok
+test_unknown_reference_match_rejected (test_metrics.MetricsTests.test_unknown_reference_match_rejected) ... ok
+test_duplicate_predictions_or_references_rejected (test_workflow.WorkflowTests.test_duplicate_predictions_or_references_rejected) ... ok
+test_fully_adjudicated_extraction_includes_omitted_reference (test_workflow.WorkflowTests.test_fully_adjudicated_extraction_includes_omitted_reference) ... ok
+test_independent_missing_information_unknown_is_correct (test_workflow.WorkflowTests.test_independent_missing_information_unknown_is_correct) ... ok
+test_patient_hash_is_stable_across_key_order (test_workflow.WorkflowTests.test_patient_hash_is_stable_across_key_order) ... ok
+test_stale_predictions_are_errors (test_workflow.WorkflowTests.test_stale_predictions_are_errors) ... ok
+test_technical_unknown_is_error_in_full_denominator (test_workflow.WorkflowTests.test_technical_unknown_is_error_in_full_denominator) ... ok
+test_unreviewed_labels_never_count (test_workflow.WorkflowTests.test_unreviewed_labels_never_count) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.531s
+
+OK

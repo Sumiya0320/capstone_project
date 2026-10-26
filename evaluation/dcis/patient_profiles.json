@@ -1,0 +1,143 @@
+[
+  {
+    "patient_id": "SYN-DCIS-ELIGIBLE",
+    "age": 55,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "0",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 0,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 64.0,
+    "life_expectancy_weeks": 260,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "breast conserving surgery"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3500.0,
+      "platelet_count_per_uL": 250000.0
+    },
+    "dcisionrt_test_ordered": true,
+    "histologic_dcis_confirmed": true,
+    "dcis_in_single_breast": true,
+    "surgery_performed": true,
+    "days_since_surgery_at_consent": 30,
+    "breast_conserving_surgery_eligible_or_received": true,
+    "eligible_for_radiation_or_systemic_treatment": true,
+    "able_to_provide_informed_consent": true,
+    "tissue_sufficient_for_dcisionrt": true,
+    "tumor_size": 12.0,
+    "tumor_size_unit": "mm",
+    "margin_status": "Negative",
+    "palpability": false,
+    "invasive_breast_cancer": false,
+    "evidence_in_ipsilateral_or_contralateral_breast_of_invasive_cancer": false,
+    "microinvasion_present": false,
+    "lymph_node_involvement": false,
+    "pagets_disease_of_nipple": false,
+    "mastectomy_for_primary_DCIS": false,
+    "prior_in_situ_or_invasive_breast_cancer": false
+  },
+  {
+    "patient_id": "SYN-DCIS-EXCLUDED",
+    "age": 25,
+    "sex": "Female",
+    "menopausal_status": "Premenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "0",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 0,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 64.0,
+    "life_expectancy_weeks": 260,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "breast conserving surgery"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3500.0,
+      "platelet_count_per_uL": 250000.0
+    },
+    "dcisionrt_test_ordered": true,
+    "histologic_dcis_confirmed": true,
+    "dcis_in_single_breast": true,
+    "surgery_performed": true,
+    "days_since_surgery_at_consent": 30,
+    "breast_conserving_surgery_eligible_or_received": true,
+    "eligible_for_radiation_or_systemic_treatment": true,
+    "able_to_provide_informed_consent": true,
+    "tissue_sufficient_for_dcisionrt": true,
+    "tumor_size": 12.0,
+    "tumor_size_unit": "mm",
+    "margin_status": "Negative",
+    "palpability": false,
+    "invasive_breast_cancer": false,
+    "evidence_in_ipsilateral_or_contralateral_breast_of_invasive_cancer": false,
+    "microinvasion_present": false,
+    "lymph_node_involvement": false,
+    "pagets_disease_of_nipple": false,
+    "mastectomy_for_primary_DCIS": false,
+    "prior_in_situ_or_invasive_breast_cancer": false
+  },
+  {
+    "patient_id": "SYN-DCIS-REVIEW",
+    "age": 55,
+    "sex": "Female",
+    "menopausal_status": "Postmenopausal",
+    "diagnosis": "Ductal carcinoma in situ (DCIS)",
+    "cancer_stage": "0",
+    "biomarkers": {
+      "ER_status": "Positive",
+      "PR_status": "Positive",
+      "HER2_status": "Negative"
+    },
+    "ecog": 0,
+    "her2_status": "Negative",
+    "hormone_receptor_status": "Positive",
+    "lvef_percent": 64.0,
+    "life_expectancy_weeks": 260,
+    "prior_metastatic_lines": 0,
+    "brain_metastases": false,
+    "prior_treatments": [
+      "breast conserving surgery"
+    ],
+    "key_lab_values": {
+      "absolute_neutrophil_count_per_uL": 3500.0,
+      "platelet_count_per_uL": 250000.0
+    },
+    "dcisionrt_test_ordered": true,
+    "histologic_dcis_confirmed": true,
+    "dcis_in_single_breast": true,
+    "surgery_performed": true,
+    "days_since_surgery_at_consent": 30,
+    "breast_conserving_surgery_eligible_or_received": true,
+    "eligible_for_radiation_or_systemic_treatment": true,
+    "able_to_provide_informed_consent": null,
+    "tissue_sufficient_for_dcisionrt": true,
+    "tumor_size": 12.0,
+    "tumor_size_unit": "mm",
+    "margin_status": "Negative",
+    "palpability": false,
+    "invasive_breast_cancer": false,
+    "evidence_in_ipsilateral_or_contralateral_breast_of_invasive_cancer": false,
+    "microinvasion_present": false,
+    "lymph_node_involvement": false,
+    "pagets_disease_of_nipple": false,
+    "mastectomy_for_primary_DCIS": false,
+    "prior_in_situ_or_invasive_breast_cancer": false
+  }
+]

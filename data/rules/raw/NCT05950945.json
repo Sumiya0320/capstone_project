@@ -290,7 +290,7 @@
       "field": null,
       "operator": null,
       "value": null,
-      "applies_if": null,
+      "applies_if": "Patient is of reproductive or childbearing potential",
       "logic_group": null,
       "notes": null,
       "rule_id": "NCT05950945_22"

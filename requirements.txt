@@ -1,4 +1,5 @@
-google-genai
-python-dotenv
 streamlit==1.64.0
 requests==2.34.2
+python-dotenv
+anthropic
+openai

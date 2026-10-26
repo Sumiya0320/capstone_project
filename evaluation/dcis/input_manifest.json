@@ -1,0 +1,63 @@
+{
+  "prepared_at": "2026-10-15T09:43:29.863069+00:00",
+  "source_url": "https://clinicaltrials.gov/api/v2/studies/NCT04916808",
+  "registry_last_update": "2026-04-03",
+  "source_sha256": "54814669f748e70dae961b2d31edcd2aae41c8ab19c01cb13a1c24fc44debb2c",
+  "rules_sha256": "7baa24f4aecb506b85187a3b2c877ef037ac6e32d8f8e355c07244f5d1e5412d",
+  "patient_sha256": {
+    "SYN-DCIS-ELIGIBLE": "d8f8e3bb5c9b993574ff01d78f3f82f4e9d00c9d859b52a44601ca12eb59b17c",
+    "SYN-DCIS-EXCLUDED": "6817b96a62c7169877778cfb38a4db5516b0cdc6fd2d335f56e8d4fb72e8aaac",
+    "SYN-DCIS-REVIEW": "c1fec9e12edfa3263dec05933dbc35be59b0c610d4938088b5b53dcf392bba8d"
+  },
+  "explanation_sample": [
+    {
+      "patient_id": "SYN-DCIS-ELIGIBLE",
+      "rule_id": "NCT04916808_03"
+    },
+    {
+      "patient_id": "SYN-DCIS-ELIGIBLE",
+      "rule_id": "NCT04916808_09"
+    },
+    {
+      "patient_id": "SYN-DCIS-ELIGIBLE",
+      "rule_id": "NCT04916808_13"
+    },
+    {
+      "patient_id": "SYN-DCIS-ELIGIBLE",
+      "rule_id": "NCT04916808_20"
+    },
+    {
+      "patient_id": "SYN-DCIS-EXCLUDED",
+      "rule_id": "NCT04916808_07"
+    },
+    {
+      "patient_id": "SYN-DCIS-EXCLUDED",
+      "rule_id": "NCT04916808_08"
+    },
+    {
+      "patient_id": "SYN-DCIS-EXCLUDED",
+      "rule_id": "NCT04916808_16"
+    },
+    {
+      "patient_id": "SYN-DCIS-EXCLUDED",
+      "rule_id": "NCT04916808_19"
+    },
+    {
+      "patient_id": "SYN-DCIS-REVIEW",
+      "rule_id": "NCT04916808_02"
+    },
+    {
+      "patient_id": "SYN-DCIS-REVIEW",
+      "rule_id": "NCT04916808_08"
+    },
+    {
+      "patient_id": "SYN-DCIS-REVIEW",
+      "rule_id": "NCT04916808_10"
+    },
+    {
+      "patient_id": "SYN-DCIS-REVIEW",
+      "rule_id": "NCT04916808_15"
+    }
+  ],
+  "warning": "No labels in this pack have been independently assigned by humans yet."
+}

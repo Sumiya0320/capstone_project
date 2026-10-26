@@ -1,0 +1,9 @@
+{
+  "status": "Passed",
+  "exit_code": 0,
+  "interpretation": "Three controlled patient-level smoke cases; not independent ground truth.",
+  "created_at": "2026-10-15T09:36:30.788400+00:00",
+  "patient_file_sha256": "e7e2288529a4512d0fcac31549e4d7053694e7f3cb69fd3a75c0cddf12ed1000",
+  "rules_sha256": "7baa24f4aecb506b85187a3b2c877ef037ac6e32d8f8e355c07244f5d1e5412d",
+  "transcript_sha256": "f69519877b97a8537e22325d3df124c07447d50cf8cd5429752dd8a83bbeaa37"
+}
